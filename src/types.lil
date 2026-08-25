@@ -1,0 +1,7 @@
+export extern class DataBag {
+  JsValue settings;
+}
+
+export extern class ParseSettings {
+  bool math;
+}

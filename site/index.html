@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="remark-math reimplemented in LilScript. A transformer splits <code>$inline$</code> and <code>$$block$$</code> out of text after parse — the lexer does not have to know math." />
+    <title>@itslil/remark-math — LilScript lab</title>
+    
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <header class="nav shell">
+      <a class="wordmark" href="#top">
+        <span class="mark">mx</span>
+        <span>@itslil/remark-math</span>
+      </a>
+      <nav>
+        <a href="#lab">lab</a>
+        <a href="https://www.npmjs.com/package/@itslil/remark-math">npm</a>
+        <a href="https://github.com/yeargun/remark-mathlil">GitHub</a>
+      </nav>
+    </header>
+    <main id="top">
+      <section class="hero shell">
+        <p class="eyebrow">@itslil/remark-math · LilScript · zero runtime deps</p>
+        <h1>Dollars,<br />to math nodes.</h1>
+        <p class="lede">remark-math reimplemented in LilScript. A transformer splits <code>$inline$</code> and <code>$$block$$</code> out of text after parse — the lexer does not have to know math.</p>
+        <div class="install-row">
+          <code>npm install @itslil/remark-math</code>
+          <button class="copy" type="button" data-copy="npm install @itslil/remark-math">copy</button>
+        </div>
+      </section>
+      <section class="ticker" aria-label="Features">
+        <div>inlineMath<span>✦</span>math<span>✦</span>settings.math<span>✦</span>tree-shake</div>
+      </section>
+      <section class="lab shell" id="lab">
+        <h2>Live lab</h2>
+        <p class="section-lead">This page loads the compiled ESM from this repo. Library lane keeps host-visible keys. Closed lane is <code>dist/*.closed.js</code>.</p>
+        <div class="samples" id="samples"></div>
+        <div class="toggles" id="toggles"></div>
+        
+        <div class="play-grid">
+          <textarea id="input" spellcheck="false" aria-label="Input"></textarea>
+          <div>
+            <div id="preview" class="preview" hidden></div>
+            <iframe id="frame" title="Rendered output" sandbox="allow-same-origin" hidden></iframe>
+            <pre id="output"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="shell">
+      <span>@itslil/remark-math · MIT · LilScript reimplementation</span>
+      <a href="https://yeargun.github.io/remark-mathlil/">yeargun.github.io/remark-mathlil</a>
+    </footer>
+  </body>
+</html>

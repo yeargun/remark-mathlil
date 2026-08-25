@@ -1,0 +1,67 @@
+{
+  "name": "@itslil/remark-math",
+  "version": "6.0.0",
+  "description": "remark-math reimplemented in LilScript",
+  "keywords": [
+    "remark",
+    "math",
+    "latex",
+    "katex",
+    "lilscript",
+    "itslil"
+  ],
+  "homepage": "https://yeargun.github.io/remark-mathlil/",
+  "bugs": "https://github.com/yeargun/remark-mathlil/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeargun/remark-mathlil.git"
+  },
+  "license": "MIT",
+  "author": "yeargun",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/remark-math.cjs",
+  "module": "./dist/remark-math.esm.js",
+  "types": "./dist/remark-math.d.ts",
+  "unpkg": "./dist/remark-math.umd.js",
+  "jsdelivr": "./dist/remark-math.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/remark-math.d.ts",
+      "import": "./dist/remark-math.esm.js",
+      "require": "./dist/remark-math.cjs",
+      "default": "./dist/remark-math.esm.js"
+    },
+    "./closed": "./dist/remark-math.closed.js",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "dist/remark-math.esm.js",
+    "dist/remark-math.cjs",
+    "dist/remark-math.umd.js",
+    "dist/remark-math.closed.js",
+    "dist/remark-math.d.ts",
+    "LICENSE",
+    "NOTICE.md",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs --compile",
+    "build:site": "node scripts/build-site.mjs",
+    "test": "node --test test/*.test.mjs",
+    "check:site": "npm run build:site && node --test test/site.test.mjs",
+    "check:pack": "node scripts/check-pack.mjs",
+    "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1"
+  }
+}
