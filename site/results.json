@@ -1,0 +1,81 @@
+{
+  "pin": "remark-math@6.0.0",
+  "package": "@itslil/remark-math",
+  "file": "remark-math",
+  "lilExport": "remarkMath",
+  "officialExport": "default",
+  "node": "v22.21.1",
+  "codec": "lilscript-codec gzip-9 / brotli-11",
+  "runtime": "Node v22.21.1",
+  "warmupDiscard": 3,
+  "comparison": "Official rows are an esbuild bundle of remark-math@6.0.0 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
+  "spec": {
+    "total": 8,
+    "pass": 8,
+    "label": "package tests"
+  },
+  "play": {
+    "kind": "md-plugin",
+    "sample": "Energy is $E=mc^2$.\n\n$$\n\\frac{a}{b}\n$$\n"
+  },
+  "size": [
+    {
+      "id": "official",
+      "name": "Official remark-math@6.0.0 graph",
+      "raw": 15294,
+      "gzip9": 3745,
+      "brotli11": 3315,
+      "note": "esbuild bundle of the published package plus runtime deps",
+      "diagnostic": false
+    },
+    {
+      "id": "official-terser-mangle",
+      "name": "Official · Terser mangle on",
+      "raw": 6350,
+      "gzip9": 2324,
+      "brotli11": 2097,
+      "note": "Terser compress of that graph, mangle: true",
+      "baseline": true
+    },
+    {
+      "id": "official-terser-nomangle",
+      "name": "Official · Terser mangle off",
+      "raw": 9585,
+      "gzip9": 2727,
+      "brotli11": 2468,
+      "note": "Terser compress of that graph, mangle: false"
+    },
+    {
+      "id": "official-esbuild",
+      "name": "Official · esbuild minify",
+      "raw": 6559,
+      "gzip9": 2546,
+      "brotli11": 2308,
+      "note": "esbuild minify of that graph"
+    },
+    {
+      "id": "itslil",
+      "name": "@itslil/remark-math · library",
+      "raw": 1849,
+      "gzip9": 895,
+      "brotli11": 801,
+      "note": "LilScript js-module, extern_fields true. The npm ESM.",
+      "primary": true
+    },
+    {
+      "id": "itslil-closed",
+      "name": "@itslil/remark-math · closed",
+      "raw": 1765,
+      "gzip9": 832,
+      "brotli11": 746,
+      "note": "Same source, extern_fields false"
+    }
+  ],
+  "throughput": [
+    {
+      "id": "itslil",
+      "name": "@itslil/remark-math",
+      "documentMs": 0
+    }
+  ]
+}
