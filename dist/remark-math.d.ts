@@ -1,10 +1,10 @@
-export interface RemarkMathSettings {
-  math?: boolean
+export interface Options {
+  singleDollarTextMath?: boolean | null
 }
 
 export function remarkMath(
-  this: { data?: (() => { settings?: RemarkMathSettings }) | { settings?: RemarkMathSettings } },
-  options?: unknown,
-): (tree: unknown, file?: unknown) => unknown
+  this: unknown,
+  options?: Options | null,
+): undefined
 
 export default remarkMath

@@ -1,0 +1,15 @@
+export string tLineEnding = "lineEnding";
+export string tLinePrefix = "linePrefix";
+export string tWhitespace = "whitespace";
+export string tChunkString = "chunkString";
+export string tCharacterEscape = "characterEscape";
+export string tMathText = "mathText";
+export string tMathTextSequence = "mathTextSequence";
+export string tMathTextData = "mathTextData";
+export string tMathTextPadding = "mathTextPadding";
+export string tSpace = "space";
+export string tMathFlow = "mathFlow";
+export string tMathFlowFence = "mathFlowFence";
+export string tMathFlowFenceSequence = "mathFlowFenceSequence";
+export string tMathFlowFenceMeta = "mathFlowFenceMeta";
+export string tMathFlowValue = "mathFlowValue";

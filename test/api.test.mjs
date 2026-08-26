@@ -10,13 +10,6 @@ const { remarkMath, default: remarkMathDefault } = await import(
   new URL("../dist/remark-math.esm.js", import.meta.url)
 )
 
-function paragraphTree(value) {
-  return {
-    type: "root",
-    children: [{ type: "paragraph", children: [{ type: "text", value }] }],
-  }
-}
-
 function fakeProcessor() {
   const store = {}
   return {
@@ -37,67 +30,36 @@ describe("@itslil/remark-math", () => {
     assert.match(source, / as default[},]/)
   })
 
-  it("keeps pinned settings keys in the library lane", () => {
-    assert.match(source, /\.math\s*=/)
-    assert.match(source, /\.settings\s*=/)
-    assert.match(source, /"inlineMath"/)
-    assert.match(source, /"math"/)
+  it("keeps official extension keys in the library lane", () => {
+    assert.match(source, /micromarkExtensions/)
+    assert.match(source, /fromMarkdownExtensions/)
+    assert.match(source, /toMarkdownExtensions/)
+    assert.match(source, /mathText/)
+    assert.match(source, /singleDollarTextMath/)
   })
 
-  it("sets settings.math on a fake processor", () => {
+  it("pushes micromark and mdast extensions onto the processor", () => {
     const { store, processor } = fakeProcessor()
-    const transform = remarkMath.call(processor)
-    assert.equal(store.settings.math, true)
-    assert.equal(typeof transform, "function")
+    const result = remarkMath.call(processor)
+    assert.equal(result, undefined)
+    assert.equal(store.micromarkExtensions.length, 1)
+    assert.ok(store.micromarkExtensions[0].flow)
+    assert.ok(store.micromarkExtensions[0].text)
+    assert.equal(store.fromMarkdownExtensions.length, 1)
+    assert.ok(store.fromMarkdownExtensions[0].enter.mathFlow)
+    assert.ok(store.fromMarkdownExtensions[0].enter.mathText)
+    assert.equal(store.toMarkdownExtensions.length, 1)
+    assert.ok(store.toMarkdownExtensions[0].handlers.math)
+    assert.ok(store.toMarkdownExtensions[0].handlers.inlineMath)
+    assert.equal(typeof store.toMarkdownExtensions[0].handlers.inlineMath.peek, "function")
   })
 
-  it("splits $...$ into inlineMath", () => {
-    const tree = paragraphTree("x is $a+b$")
-    remarkMath.call({ data() { return {} } })(tree)
-    const kids = tree.children[0].children
-    assert.equal(kids[0].type, "text")
-    assert.equal(kids[0].value, "x is ")
-    assert.equal(kids[1].type, "inlineMath")
-    assert.equal(kids[1].value, "a+b")
-  })
-
-  it("splits $$...$$ into math", () => {
-    const tree = paragraphTree("$$x^2$$")
-    remarkMath.call({})(tree)
-    const kids = tree.children[0].children
-    assert.equal(kids.length, 1)
-    assert.equal(kids[0].type, "math")
-    assert.equal(kids[0].value, "x^2")
-  })
-
-  it("ignores escaped dollars and does not split code or link urls", () => {
-    const tree = {
-      type: "root",
-      children: [
-        { type: "code", value: "$a+b$" },
-        {
-          type: "paragraph",
-          children: [
-            { type: "inlineCode", value: "$a$" },
-            { type: "text", value: "cost is \\$5 and $x$" },
-            { type: "link", url: "$not$", children: [{ type: "text", value: "see $y$" }] },
-          ],
-        },
-      ],
-    }
-    remarkMath.call({})(tree)
-    assert.equal(tree.children[0].value, "$a+b$")
-    const kids = tree.children[1].children
-    assert.equal(kids[0].type, "inlineCode")
-    assert.equal(kids[1].type, "text")
-    assert.equal(kids[1].value, "cost is \\$5 and ")
-    assert.equal(kids[2].type, "inlineMath")
-    assert.equal(kids[2].value, "x")
-    assert.equal(kids[3].type, "link")
-    assert.equal(kids[3].url, "$not$")
-    assert.equal(kids[3].children[0].type, "text")
-    assert.equal(kids[3].children[0].value, "see ")
-    assert.equal(kids[3].children[1].type, "inlineMath")
-    assert.equal(kids[3].children[1].value, "y")
+  it("creates missing extension arrays", () => {
+    const { store, processor } = fakeProcessor()
+    store.micromarkExtensions = []
+    remarkMath.call(processor, { singleDollarTextMath: false })
+    assert.equal(store.micromarkExtensions.length, 1)
+    assert.equal(store.fromMarkdownExtensions.length, 1)
+    assert.equal(store.toMarkdownExtensions.length, 1)
   })
 })

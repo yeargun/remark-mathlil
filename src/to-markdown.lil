@@ -1,0 +1,162 @@
+import { arrLen, call0, call1, call2, codePointAt, indexOfFrom, isNullish, jsString, objGet, objectAssign, push, repeatStr, singleDollarEnabled, undef } from "./host.lil";
+
+int longestStreak(string source, string substring) {
+  int index = indexOfFrom(source, substring, 0);
+  int expected = index;
+  int count = 0;
+  int max = 0;
+  int step = substring.length;
+  while (index != -1) {
+    if (index == expected) {
+      count = count + 1;
+      if (count > max) {
+        max = count;
+      }
+    } else {
+      count = 1;
+    }
+    expected = index + step;
+    index = indexOfFrom(source, substring, expected);
+  }
+  return max;
+}
+
+string nodeText(JsValue node) {
+  JsValue value = objGet(node, "value");
+  if (value is string) {
+    return value;
+  }
+  return "";
+}
+
+JsValue inlineMathPeek = JS.method0((JsValue _self) => {
+  return "$";
+});
+
+export JsValue mathToMarkdown(JsValue options) {
+  bool single = singleDollarEnabled(options);
+
+  JsValue handleMath = JS.methodRest((JsValue _self, JsValue args) => {
+    JsValue node = args[0];
+    JsValue state = args[2];
+    JsValue info = args[3];
+    string raw = nodeText(node);
+    JsValue tracker = call1(objGet(state, "createTracker"), state, info);
+    int size = longestStreak(raw, "$") + 1;
+    if (size < 2) {
+      size = 2;
+    }
+    string sequence = repeatStr("$", size);
+    JsValue exit = call1(objGet(state, "enter"), state, "mathFlow");
+    string value = jsString(call1(objGet(tracker, "move"), tracker, sequence));
+    JsValue meta = objGet(node, "meta");
+    if (meta.truthy()) {
+      JsValue subexit = call1(objGet(state, "enter"), state, "mathFlowMeta");
+      JsValue encode = JS.array();
+      push(encode, "$");
+      JsValue safeOpts = JS.object();
+      JS.set(safeOpts, "after", "\n");
+      JS.set(safeOpts, "before", value);
+      JS.set(safeOpts, "encode", encode);
+      objectAssign(safeOpts, call0(objGet(tracker, "current"), tracker));
+      value = value + jsString(call1(objGet(tracker, "move"), tracker, call2(objGet(state, "safe"), state, meta, safeOpts)));
+      call0(subexit, undef());
+    }
+    value = value + jsString(call1(objGet(tracker, "move"), tracker, "\n"));
+    if (raw.length > 0) {
+      value = value + jsString(call1(objGet(tracker, "move"), tracker, raw + "\n"));
+    }
+    value = value + jsString(call1(objGet(tracker, "move"), tracker, sequence));
+    call0(exit, undef());
+    return value;
+  });
+
+  JsValue handleInline = JS.method3((JsValue _self, JsValue node, JsValue _parent, JsValue state) => {
+    string value = nodeText(node);
+    int size = 1;
+    if (!single) {
+      size = size + 1;
+    }
+    while (true) {
+      string dollars = repeatStr("\\$", size);
+      Regex probe = new Regex("(^|[^$])" + dollars + "([^$]|$)", "");
+      if (!probe.test(value)) {
+        break;
+      }
+      size = size + 1;
+    }
+    string sequence = repeatStr("$", size);
+    Regex hasContent = new Regex("[^ \\r\\n]", "");
+    Regex startsSpace = new Regex("^[ \\r\\n]", "");
+    Regex endsSpace = new Regex("[ \\r\\n]$", "");
+    Regex dollarEdge = new Regex("^\\$|\\$$", "");
+    if (hasContent.test(value) && (startsSpace.test(value) && endsSpace.test(value) || dollarEdge.test(value))) {
+      value = " " + value + " ";
+    }
+    JsValue unsafe = objGet(state, "unsafe");
+    int index = -1;
+    int n = arrLen(unsafe);
+    while (true) {
+      index = index + 1;
+      if (index >= n) {
+        break;
+      }
+      JsValue pattern = unsafe[index];
+      if (!objGet(pattern, "atBreak").truthy()) {
+        continue;
+      }
+      JsValue expression = call1(objGet(state, "compilePattern"), state, pattern);
+      while (true) {
+        JsValue found = JS.call(JS.get(expression, "exec"), expression, value);
+        if (isNullish(found)) {
+          break;
+        }
+        int position = JS.number(objGet(found, "index")).toInt();
+        int matchIndex = position;
+        if (codePointAt(value, position) == 10 && position > 0 && codePointAt(value, position - 1) == 13) {
+          position = position - 1;
+        }
+        value = value.slice(0, position) + " " + value.slice(matchIndex + 1, value.length);
+      }
+    }
+    return sequence + value + sequence;
+  });
+
+  JS.set(handleInline, "peek", inlineMathPeek);
+
+  JsValue unsafe = JS.array();
+  JsValue crMeta = JS.object();
+  JS.set(crMeta, "character", "\r");
+  JS.set(crMeta, "inConstruct", "mathFlowMeta");
+  push(unsafe, crMeta);
+  JsValue lfMeta = JS.object();
+  JS.set(lfMeta, "character", "\n");
+  JS.set(lfMeta, "inConstruct", "mathFlowMeta");
+  push(unsafe, lfMeta);
+  JsValue dollarPhrase = JS.object();
+  JS.set(dollarPhrase, "character", "$");
+  if (single) {
+    JS.set(dollarPhrase, "after", undef());
+  } else {
+    JS.set(dollarPhrase, "after", "\\$");
+  }
+  JS.set(dollarPhrase, "inConstruct", "phrasing");
+  push(unsafe, dollarPhrase);
+  JsValue dollarMeta = JS.object();
+  JS.set(dollarMeta, "character", "$");
+  JS.set(dollarMeta, "inConstruct", "mathFlowMeta");
+  push(unsafe, dollarMeta);
+  JsValue dollarBreak = JS.object();
+  JS.set(dollarBreak, "atBreak", true);
+  JS.set(dollarBreak, "character", "$");
+  JS.set(dollarBreak, "after", "\\$");
+  push(unsafe, dollarBreak);
+
+  JsValue handlers = JS.object();
+  JS.set(handlers, "math", handleMath);
+  JS.set(handlers, "inlineMath", handleInline);
+  JsValue extension = JS.object();
+  JS.set(extension, "unsafe", unsafe);
+  JS.set(extension, "handlers", handlers);
+  return extension;
+}

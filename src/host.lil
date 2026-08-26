@@ -1,0 +1,139 @@
+extern JsValue Object;
+extern JsValue String;
+
+export JsValue undef() {
+  return JS.undefined();
+}
+
+export bool isUndef(JsValue value) {
+  return JS.isUndefined(value);
+}
+
+export bool isNull(JsValue value) {
+  return JS.isNullish(value) && !JS.isUndefined(value);
+}
+
+export bool isNullish(JsValue value) {
+  return JS.isUndefined(value) || JS.isNullish(value);
+}
+
+export bool isEof(JsValue code) {
+  return isNull(code);
+}
+
+export string jsString(JsValue value) {
+  if (value is string) {
+    return value;
+  }
+  if (JS.isUndefined(value)) {
+    return "undefined";
+  }
+  if (JS.isNullish(value)) {
+    return "null";
+  }
+  return JS.string(JS.call(String, undef(), value));
+}
+
+export int jsInt(JsValue value) {
+  return JS.number(value).toInt();
+}
+
+export int arrLen(JsValue list) {
+  if (isNullish(list)) {
+    return 0;
+  }
+  return JS.number(JS.get(list, "length")).toInt();
+}
+
+export JsValue objGet(JsValue obj, string key) {
+  return JS.get(obj, key);
+}
+
+export void objSet(JsValue obj, string key, JsValue value) {
+  JS.set(obj, key, value);
+}
+
+export JsValue call0(JsValue fn, JsValue self) {
+  return JS.call(fn, self);
+}
+
+export JsValue call1(JsValue fn, JsValue self, JsValue a) {
+  return JS.call(fn, self, a);
+}
+
+export JsValue call2(JsValue fn, JsValue self, JsValue a, JsValue b) {
+  return JS.call(fn, self, a, b);
+}
+
+export JsValue call3(JsValue fn, JsValue self, JsValue a, JsValue b, JsValue c) {
+  return JS.call(fn, self, a, b, c);
+}
+
+export void push(JsValue list, JsValue item) {
+  JS.call(JS.get(list, "push"), list, item);
+}
+
+export bool includesVal(JsValue list, JsValue value) {
+  if (isNullish(list)) {
+    return false;
+  }
+  return JS.call(JS.get(list, "includes"), list, value).truthy();
+}
+
+export JsValue objectAssign(JsValue target, JsValue source) {
+  return JS.call(JS.get(Object, "assign"), Object, target, source);
+}
+
+export JsValue optionOrEmpty(JsValue options) {
+  if (isNullish(options)) {
+    return JS.object();
+  }
+  return options;
+}
+
+export bool singleDollarEnabled(JsValue options) {
+  if (isNullish(options)) {
+    return true;
+  }
+  JsValue flag = objGet(options, "singleDollarTextMath");
+  if (isNullish(flag)) {
+    return true;
+  }
+  if (flag is bool) {
+    return flag;
+  }
+  return flag.truthy();
+}
+
+export JsValue ensureList(JsValue data, string key) {
+  JsValue list = objGet(data, key);
+  if (list.truthy()) {
+    return list;
+  }
+  list = JS.array();
+  objSet(data, key, list);
+  return list;
+}
+
+export string repeatStr(string unit, int count) {
+  JsValue value = unit;
+  return jsString(JS.call(JS.get(value, "repeat"), value, count));
+}
+
+export int indexOfFrom(string source, string needle, int start) {
+  JsValue value = source;
+  return JS.number(JS.call(JS.get(value, "indexOf"), value, needle, start)).toInt();
+}
+
+export int codePointAt(string source, int index) {
+  JsValue value = source;
+  JsValue point = JS.call(JS.get(value, "codePointAt"), value, index);
+  if (isNullish(point)) {
+    return -1;
+  }
+  return JS.number(point).toInt();
+}
+
+export string replaceStr(JsValue value, Regex pattern, string replacement) {
+  return jsString(JS.call(JS.get(value, "replace"), value, pattern, replacement));
+}

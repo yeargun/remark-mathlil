@@ -10,9 +10,9 @@
   "warmupDiscard": 3,
   "comparison": "Official rows are an esbuild bundle of remark-math@6.0.0 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
   "spec": {
-    "total": 8,
-    "pass": 8,
-    "label": "package tests"
+    "total": 59,
+    "pass": 59,
+    "label": "official suite"
   },
   "play": {
     "kind": "md-plugin",
@@ -56,18 +56,18 @@
     {
       "id": "itslil",
       "name": "@itslil/remark-math · library",
-      "raw": 1849,
-      "gzip9": 895,
-      "brotli11": 801,
+      "raw": 9242,
+      "gzip9": 3651,
+      "brotli11": 3281,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark-math · closed",
-      "raw": 1765,
-      "gzip9": 832,
-      "brotli11": 746,
+      "raw": 9158,
+      "gzip9": 3592,
+      "brotli11": 3234,
       "note": "Same source, extern_fields false"
     }
   ],

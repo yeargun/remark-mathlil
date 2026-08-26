@@ -16,7 +16,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 const lilscriptRoot = process.env.LILSCRIPT_ROOT ?? resolve(root, "..", "lilscript")
 const dist = resolve(root, "dist")
 const file = "remark-math"
-const banner = "/*! @itslil/remark-math 6.0.0 | LilScript reimplementation of remark-math | MIT */\n"
+const banner = "/*! @itslil/remark-math 6.0.1 | LilScript reimplementation of remark-math | MIT */\n"
 
 function compilerPath() {
   const candidates = [

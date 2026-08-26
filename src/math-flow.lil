@@ -1,0 +1,186 @@
+import { arrLen, call0, call1, call2, call3, includesVal, isEof, jsString, objGet, undef } from "./host.lil";
+import { factorySpace } from "./factory-space.lil";
+import { markdownLineEnding } from "./util-character.lil";
+import { cDollarSign, codeEq } from "./symbol/codes.lil";
+import { kContentTypeString, kTabSize } from "./symbol/constants.lil";
+import { tChunkString, tLineEnding, tLinePrefix, tMathFlow, tMathFlowFence, tMathFlowFenceMeta, tMathFlowFenceSequence, tMathFlowValue, tWhitespace } from "./symbol/types.lil";
+
+JsValue tokenizeNonLazyContinuation = JS.method3((JsValue self, JsValue effects, JsValue ok, JsValue nok) => {
+  JsValue lineStart = JS.method1((JsValue _s, JsValue code) => {
+    if (objGet(objGet(self, "parser"), "lazy")[objGet(call0(objGet(self, "now"), self), "line")].truthy()) {
+      return call1(nok, undef(), code);
+    }
+    return call1(ok, undef(), code);
+  });
+
+  JsValue start = JS.method1((JsValue _s, JsValue code) => {
+    if (isEof(code)) {
+      return call1(ok, undef(), code);
+    }
+    call1(objGet(effects, "enter"), effects, tLineEnding);
+    call1(objGet(effects, "consume"), effects, code);
+    call1(objGet(effects, "exit"), effects, tLineEnding);
+    return lineStart;
+  });
+
+  return start;
+});
+
+JsValue nonLazyContinuation = JS.object();
+JS.set(nonLazyContinuation, "tokenize", tokenizeNonLazyContinuation);
+JS.set(nonLazyContinuation, "partial", true);
+
+JsValue tokenizeMathFenced = JS.method3((JsValue self, JsValue effects, JsValue ok, JsValue nok) => {
+  JsValue st = JS.object();
+  JS.set(st, "initialSize", 0);
+  JS.set(st, "sizeOpen", 0);
+
+  JsValue tokenizeClosingFence = JS.method3((JsValue _ctx, JsValue closeEffects, JsValue closeOk, JsValue closeNok) => {
+    JsValue closeSt = JS.object();
+    JS.set(closeSt, "size", 0);
+
+    JsValue afterSequenceClose = JS.method1((JsValue _s, JsValue code) => {
+      if (isEof(code) || markdownLineEnding(code)) {
+        call1(objGet(closeEffects, "exit"), closeEffects, tMathFlowFence);
+        return call1(closeOk, undef(), code);
+      }
+      return call1(closeNok, undef(), code);
+    });
+
+    JsValue sequenceClose = JS.method1((JsValue _s, JsValue code) => {
+      if (codeEq(code, cDollarSign)) {
+        JS.set(closeSt, "size", JS.number(objGet(closeSt, "size")) + 1.0);
+        call1(objGet(closeEffects, "consume"), closeEffects, code);
+        return sequenceClose;
+      }
+      if (JS.number(objGet(closeSt, "size")) < JS.number(objGet(st, "sizeOpen"))) {
+        return call1(closeNok, undef(), code);
+      }
+      call1(objGet(closeEffects, "exit"), closeEffects, tMathFlowFenceSequence);
+      return call1(factorySpace(closeEffects, afterSequenceClose, tWhitespace, undef()), undef(), code);
+    });
+
+    JsValue beforeSequenceClose = JS.method1((JsValue _s, JsValue code) => {
+      call1(objGet(closeEffects, "enter"), closeEffects, tMathFlowFence);
+      call1(objGet(closeEffects, "enter"), closeEffects, tMathFlowFenceSequence);
+      return call1(sequenceClose, undef(), code);
+    });
+
+    JsValue max = kTabSize;
+    if (includesVal(objGet(objGet(objGet(self, "parser"), "constructs"), "disable")["null"], "codeIndented")) {
+      max = undef();
+    }
+    return factorySpace(closeEffects, beforeSequenceClose, tLinePrefix, max);
+  });
+
+  JsValue closeConstruct = JS.object();
+  JS.set(closeConstruct, "tokenize", tokenizeClosingFence);
+  JS.set(closeConstruct, "partial", true);
+
+  JsValue after = JS.method1((JsValue _s, JsValue code) => {
+    call1(objGet(effects, "exit"), effects, tMathFlow);
+    return call1(ok, undef(), code);
+  });
+
+  JsValue contentChunk = JS.method1((JsValue _s, JsValue code) => {
+    if (isEof(code) || markdownLineEnding(code)) {
+      call1(objGet(effects, "exit"), effects, tMathFlowValue);
+      return call1(objGet(st, "beforeContentChunk"), undef(), code);
+    }
+    call1(objGet(effects, "consume"), effects, code);
+    return contentChunk;
+  });
+
+  JsValue beforeContentChunk = JS.method1((JsValue _s, JsValue code) => {
+    if (isEof(code)) {
+      return call1(after, undef(), code);
+    }
+    if (markdownLineEnding(code)) {
+      return call1(call3(objGet(effects, "attempt"), effects, nonLazyContinuation, objGet(st, "beforeNonLazyContinuation"), after), undef(), code);
+    }
+    call1(objGet(effects, "enter"), effects, tMathFlowValue);
+    return call1(contentChunk, undef(), code);
+  });
+
+  JsValue contentStart = JS.method1((JsValue _s, JsValue code) => {
+    if (JS.number(objGet(st, "initialSize")) > 0.0) {
+      return call1(factorySpace(effects, beforeContentChunk, tLinePrefix, JS.number(objGet(st, "initialSize")) + 1.0), undef(), code);
+    }
+    return call1(beforeContentChunk, undef(), code);
+  });
+
+  JsValue beforeNonLazyContinuation = JS.method1((JsValue _s, JsValue code) => {
+    return call1(call3(objGet(effects, "attempt"), effects, closeConstruct, after, contentStart), undef(), code);
+  });
+
+  JsValue meta = JS.method1((JsValue _s, JsValue code) => {
+    if (isEof(code) || markdownLineEnding(code)) {
+      call1(objGet(effects, "exit"), effects, tChunkString);
+      call1(objGet(effects, "exit"), effects, tMathFlowFenceMeta);
+      return call1(objGet(st, "metaAfter"), undef(), code);
+    }
+    if (codeEq(code, cDollarSign)) {
+      return call1(nok, undef(), code);
+    }
+    call1(objGet(effects, "consume"), effects, code);
+    return meta;
+  });
+
+  JsValue metaAfter = JS.method1((JsValue _s, JsValue code) => {
+    call1(objGet(effects, "exit"), effects, tMathFlowFence);
+    if (objGet(self, "interrupt").truthy()) {
+      return call1(ok, undef(), code);
+    }
+    return call1(call3(objGet(effects, "attempt"), effects, nonLazyContinuation, beforeNonLazyContinuation, after), undef(), code);
+  });
+
+  JsValue metaBefore = JS.method1((JsValue _s, JsValue code) => {
+    if (isEof(code) || markdownLineEnding(code)) {
+      return call1(metaAfter, undef(), code);
+    }
+    call1(objGet(effects, "enter"), effects, tMathFlowFenceMeta);
+    JsValue fields = JS.object();
+    JS.set(fields, "contentType", kContentTypeString);
+    call2(objGet(effects, "enter"), effects, tChunkString, fields);
+    return call1(meta, undef(), code);
+  });
+
+  JsValue sequenceOpen = JS.method1((JsValue _s, JsValue code) => {
+    if (codeEq(code, cDollarSign)) {
+      call1(objGet(effects, "consume"), effects, code);
+      JS.set(st, "sizeOpen", JS.number(objGet(st, "sizeOpen")) + 1.0);
+      return sequenceOpen;
+    }
+    if (JS.number(objGet(st, "sizeOpen")) < 2.0) {
+      return call1(nok, undef(), code);
+    }
+    call1(objGet(effects, "exit"), effects, tMathFlowFenceSequence);
+    return call1(factorySpace(effects, metaBefore, tWhitespace, undef()), undef(), code);
+  });
+
+  JsValue start = JS.method1((JsValue _s, JsValue code) => {
+    JsValue events = objGet(self, "events");
+    float prefix = 0.0;
+    if (arrLen(events) > 0) {
+      JsValue tail = events[arrLen(events) - 1];
+      if (tail.truthy() && objGet(tail[1], "type") == tLinePrefix) {
+        prefix = JS.number(jsString(call2(objGet(tail[2], "sliceSerialize"), tail[2], tail[1], true)).length);
+      }
+    }
+    JS.set(st, "initialSize", prefix);
+    call1(objGet(effects, "enter"), effects, tMathFlow);
+    call1(objGet(effects, "enter"), effects, tMathFlowFence);
+    call1(objGet(effects, "enter"), effects, tMathFlowFenceSequence);
+    return call1(sequenceOpen, undef(), code);
+  });
+
+  JS.set(st, "beforeContentChunk", beforeContentChunk);
+  JS.set(st, "beforeNonLazyContinuation", beforeNonLazyContinuation);
+  JS.set(st, "metaAfter", metaAfter);
+  return start;
+});
+
+export JsValue mathFlow = JS.object();
+JS.set(mathFlow, "tokenize", tokenizeMathFenced);
+JS.set(mathFlow, "concrete", true);
+JS.set(mathFlow, "name", "mathFlow");

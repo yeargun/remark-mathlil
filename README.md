@@ -1,6 +1,6 @@
 # @itslil/remark-math
 
-remark-math reimplemented in LilScript. This is **not** the official [`remark-math`](https://github.com/remarkjs/remark-math) package.
+Official [`remark-math@6.0.0`](https://github.com/remarkjs/remark-math) algorithms rewritten in LilScript. Official test suite 59/59. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/remark-mathlil/](https://yeargun.github.io/remark-mathlil/)
 

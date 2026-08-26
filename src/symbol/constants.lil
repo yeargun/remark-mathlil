@@ -1,0 +1,2 @@
+export string kContentTypeString = "string";
+export int kTabSize = 4;

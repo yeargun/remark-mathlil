@@ -1,0 +1,15 @@
+import { objSet } from "./host.lil";
+import { mathFlow } from "./math-flow.lil";
+import { mathText } from "./math-text.lil";
+import { cDollarSign } from "./symbol/codes.lil";
+
+export JsValue math(JsValue options) {
+  JsValue flow = JS.object();
+  objSet(flow, JS.string(cDollarSign), mathFlow);
+  JsValue text = JS.object();
+  objSet(text, JS.string(cDollarSign), mathText(options));
+  JsValue extension = JS.object();
+  JS.set(extension, "flow", flow);
+  JS.set(extension, "text", text);
+  return extension;
+}

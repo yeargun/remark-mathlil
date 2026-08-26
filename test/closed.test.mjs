@@ -13,13 +13,13 @@ describe("@itslil/remark-math closed lane", () => {
     const closed = await import(pathToFileURL(closedPath).href)
     assert.equal(typeof closed.remarkMath, "function")
     assert.equal(closed.default, closed.remarkMath)
-    const tree = {
-      type: "root",
-      children: [{ type: "paragraph", children: [{ type: "text", value: "x is $a+b$" }] }],
-    }
-    const transform = closed.remarkMath.call({})
-    transform(tree)
-    assert.equal(tree.children[0].children[1].type, "inlineMath")
-    assert.equal(tree.children[0].children[1].value, "a+b")
+    const store = {}
+    const result = closed.remarkMath.call({
+      data() {
+        return store
+      },
+    })
+    assert.equal(result, undefined)
+    assert.ok(Object.values(store).some((value) => Array.isArray(value) && value.length > 0))
   })
 })
