@@ -56,18 +56,18 @@
     {
       "id": "itslil",
       "name": "@itslil/remark-math · library",
-      "raw": 9242,
-      "gzip9": 3651,
-      "brotli11": 3281,
+      "raw": 6770,
+      "gzip9": 2620,
+      "brotli11": 2352,
       "note": "LilScript js-module, extern_fields true. The npm ESM.",
       "primary": true
     },
     {
       "id": "itslil-closed",
       "name": "@itslil/remark-math · closed",
-      "raw": 9158,
-      "gzip9": 3592,
-      "brotli11": 3234,
+      "raw": 6686,
+      "gzip9": 2560,
+      "brotli11": 2308,
       "note": "Same source, extern_fields false"
     }
   ],
