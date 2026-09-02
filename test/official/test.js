@@ -12,13 +12,13 @@ test('remarkMath', async function (t) {
   const toHtml = unified()
     .use(remarkParse)
     .use(remarkMath)
+    // @ts-expect-error: to do: remove when `remark-rehype` is released.
     .use(remarkRehype)
     .use(rehypeStringify)
 
   await t.test('should expose the public api', async function () {
     assert.deepEqual(Object.keys(await import('../../dist/remark-math.esm.js')).sort(), [
-      'default',
-      'remarkMath'
+      'default'
     ])
   })
 
@@ -480,6 +480,7 @@ test('remarkMath', async function (t) {
           await unified()
             .use(remarkParse)
             .use(remarkMath, {singleDollarTextMath: false})
+            // @ts-expect-error: to do: remove when `remark-rehype` is released.
             .use(remarkRehype)
             .use(rehypeStringify)
             .process('Math $\\alpha$\n\n$$\\beta+\\gamma$$\n')

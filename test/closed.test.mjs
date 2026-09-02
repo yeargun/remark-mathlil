@@ -11,10 +11,10 @@ describe("@itslil/remark-math closed lane", () => {
   it("ships a closed artifact whose exports stay callable", async () => {
     assert.equal(existsSync(closedPath), true, "dist/remark-math.closed.js")
     const closed = await import(pathToFileURL(closedPath).href)
-    assert.equal(typeof closed.remarkMath, "function")
-    assert.equal(closed.default, closed.remarkMath)
+    assert.deepEqual(Object.keys(closed), ["default"])
+    assert.equal(typeof closed.default, "function")
     const store = {}
-    const result = closed.remarkMath.call({
+    const result = closed.default.call({
       data() {
         return store
       },

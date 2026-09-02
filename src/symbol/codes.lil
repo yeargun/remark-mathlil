@@ -3,13 +3,3 @@ export int cVirtualSpace = -1;
 export int cNul = 0;
 export int cSpace = 32;
 export int cDollarSign = 36;
-
-export bool codeEq(JsValue code, int n) {
-  if (code is float) {
-    return code.toInt() == n;
-  }
-  if (JS.typeOf(code) != "number") {
-    return false;
-  }
-  return JS.number(code).toInt() == n;
-}

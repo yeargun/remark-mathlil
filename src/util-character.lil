@@ -1,19 +1,10 @@
-import { isEof } from "./host.lil";
-import { cHorizontalTab, cNul, cSpace, cVirtualSpace, codeEq } from "./symbol/codes.lil";
+import { cHorizontalTab, cSpace, cVirtualSpace } from "./symbol/codes.lil";
 
 export bool markdownLineEnding(JsValue code) {
-  if (isEof(code)) {
-    return false;
-  }
-  if (code is float) {
-    return code.toInt() < cHorizontalTab;
-  }
-  if (JS.typeOf(code) != "number") {
-    return false;
-  }
-  return JS.number(code).toInt() < cHorizontalTab;
+  return !JS.strictEqual(code, null) && JS.number(code) < cHorizontalTab;
 }
 
 export bool markdownSpace(JsValue code) {
-  return codeEq(code, cHorizontalTab) || codeEq(code, cVirtualSpace) || codeEq(code, cSpace);
+  return JS.strictEqual(code, cHorizontalTab) || JS.strictEqual(code, cVirtualSpace) ||
+    JS.strictEqual(code, cSpace);
 }

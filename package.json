@@ -1,12 +1,18 @@
 {
   "name": "@itslil/remark-math",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "remark-math reimplemented in LilScript",
   "keywords": [
-    "remark",
-    "math",
-    "latex",
     "katex",
+    "latex",
+    "markdown",
+    "math",
+    "mdast",
+    "plugin",
+    "remark",
+    "remark-plugin",
+    "tex",
+    "unified",
     "lilscript",
     "itslil"
   ],
@@ -56,18 +62,23 @@
   "scripts": {
     "build": "node scripts/build.mjs --compile",
     "build:site": "node scripts/build-site.mjs",
-    "test": "node --test test/*.test.mjs test/official/test.js",
+    "test": "npm run build && npm run check:types && node --test test/*.test.mjs test/official/test.js",
+    "check:types": "tsc --noEmit --strict --exactOptionalPropertyTypes --module NodeNext --moduleResolution NodeNext --target ES2022 test/types.test.ts",
     "check:site": "npm run build:site && node --test test/site.test.mjs",
     "check:pack": "node scripts/check-pack.mjs",
     "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
   },
+  "dependencies": {
+    "@types/mdast": "^4.0.0"
+  },
   "devDependencies": {
     "esbuild": "0.28.1",
-    "rehype-stringify": "^10.0.1",
+    "rehype-stringify": "^10.0.0",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.2",
+    "remark-rehype": "^10.0.0",
     "remark-stringify": "^11.0.0",
-    "unified": "^11.0.5",
+    "typescript": "^5.0.0",
+    "unified": "^11.0.0",
     "unist-util-remove-position": "^5.0.0"
   }
 }

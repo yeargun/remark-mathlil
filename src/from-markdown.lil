@@ -1,55 +1,44 @@
-import { arrLen, call0, call1, call2, jsString, objGet, push, replaceStr, undef } from "./host.lil";
+import { call0, call1, call2, objGet, push, undef } from "./host.lil";
 
 JsValue classNames(string first, string second) {
-  JsValue names = JS.array();
-  push(names, first);
-  push(names, second);
-  return names;
+  return JS.array(first, second);
 }
 
 JsValue textNode(string value) {
-  JsValue node = JS.object();
-  JS.set(node, "type", "text");
-  JS.set(node, "value", value);
-  return node;
+  return JS.object("type", "text", "value", value);
 }
 
+export JsValue mathFromMarkdown() {
 JsValue enterMathFlow = JS.method1((JsValue self, JsValue token) => {
-  JsValue props = JS.object();
-  JS.set(props, "className", classNames("language-math", "math-display"));
-  JsValue children = JS.array();
-  JsValue code = JS.object();
-  JS.set(code, "type", "element");
-  JS.set(code, "tagName", "code");
-  JS.set(code, "properties", props);
-  JS.set(code, "children", children);
-  JsValue hChildren = JS.array();
-  push(hChildren, code);
-  JsValue data = JS.object();
-  JS.set(data, "hName", "pre");
-  JS.set(data, "hChildren", hChildren);
-  JsValue node = JS.object();
-  JS.set(node, "type", "math");
-  JS.set(node, "meta", null);
-  JS.set(node, "value", "");
-  JS.set(node, "data", data);
+  JsValue code = JS.object(
+    "type", "element",
+    "tagName", "code",
+    "properties", JS.object("className", classNames("language-math", "math-display")),
+    "children", JS.array()
+  );
+  JsValue node = JS.object(
+    "type", "math",
+    "meta", null,
+    "value", "",
+    "data", JS.object("hName", "pre", "hChildren", JS.array(code))
+  );
   call2(objGet(self, "enter"), self, node, token);
   return undef();
 });
 
-JsValue enterMathFlowMeta = JS.method1((JsValue self, JsValue _token) => {
+JsValue enterMathFlowMeta = JS.method0((JsValue self) => {
   call0(objGet(self, "buffer"), self);
   return undef();
 });
 
-JsValue exitMathFlowMeta = JS.method1((JsValue self, JsValue _token) => {
+JsValue exitMathFlowMeta = JS.method0((JsValue self) => {
   JsValue data = call0(objGet(self, "resume"), self);
-  JsValue stack = objGet(self, "stack");
-  JS.set(stack[arrLen(stack) - 1], "meta", data);
+  JsValue[] stack = JS.assume(objGet(self, "stack"));
+  JS.set(stack[stack.length - 1], "meta", data);
   return undef();
 });
 
-JsValue exitMathFlowFence = JS.method1((JsValue self, JsValue _token) => {
+JsValue exitMathFlowFence = JS.method0((JsValue self) => {
   if (objGet(objGet(self, "data"), "mathFlowInside").truthy()) {
     return undef();
   }
@@ -60,9 +49,10 @@ JsValue exitMathFlowFence = JS.method1((JsValue self, JsValue _token) => {
 
 JsValue exitMathFlow = JS.method1((JsValue self, JsValue token) => {
   Regex strip = new Regex("^(\\r?\\n|\\r)|(\\r?\\n|\\r)$", "g");
-  string data = replaceStr(call0(objGet(self, "resume"), self), strip, "");
-  JsValue stack = objGet(self, "stack");
-  JsValue node = stack[arrLen(stack) - 1];
+  string resumed = JS.assume(call0(objGet(self, "resume"), self));
+  string data = resumed.replace(strip, "");
+  JsValue[] stack = JS.assume(objGet(self, "stack"));
+  JsValue node = stack[stack.length - 1];
   call1(objGet(self, "exit"), self, token);
   JS.set(node, "value", data);
   JsValue kids = objGet(objGet(objGet(node, "data"), "hChildren")[0], "children");
@@ -72,26 +62,24 @@ JsValue exitMathFlow = JS.method1((JsValue self, JsValue token) => {
 });
 
 JsValue enterMathText = JS.method1((JsValue self, JsValue token) => {
-  JsValue hProps = JS.object();
-  JS.set(hProps, "className", classNames("language-math", "math-inline"));
-  JsValue hChildren = JS.array();
-  JsValue data = JS.object();
-  JS.set(data, "hName", "code");
-  JS.set(data, "hProperties", hProps);
-  JS.set(data, "hChildren", hChildren);
-  JsValue node = JS.object();
-  JS.set(node, "type", "inlineMath");
-  JS.set(node, "value", "");
-  JS.set(node, "data", data);
+  JsValue node = JS.object(
+    "type", "inlineMath",
+    "value", "",
+    "data", JS.object(
+      "hName", "code",
+      "hProperties", JS.object("className", classNames("language-math", "math-inline")),
+      "hChildren", JS.array()
+    )
+  );
   call2(objGet(self, "enter"), self, node, token);
   call0(objGet(self, "buffer"), self);
   return undef();
 });
 
 JsValue exitMathText = JS.method1((JsValue self, JsValue token) => {
-  string data = jsString(call0(objGet(self, "resume"), self));
-  JsValue stack = objGet(self, "stack");
-  JsValue node = stack[arrLen(stack) - 1];
+  string data = JS.assume(call0(objGet(self, "resume"), self));
+  JsValue[] stack = JS.assume(objGet(self, "stack"));
+  JsValue node = stack[stack.length - 1];
   call1(objGet(self, "exit"), self, token);
   JS.set(node, "value", data);
   push(objGet(objGet(node, "data"), "hChildren"), textNode(data));
@@ -106,20 +94,19 @@ JsValue exitMathData = JS.method1((JsValue self, JsValue token) => {
   return undef();
 });
 
-export JsValue mathFromMarkdown() {
-  JsValue enter = JS.object();
-  JS.set(enter, "mathFlow", enterMathFlow);
-  JS.set(enter, "mathFlowFenceMeta", enterMathFlowMeta);
-  JS.set(enter, "mathText", enterMathText);
-  JsValue exit = JS.object();
-  JS.set(exit, "mathFlow", exitMathFlow);
-  JS.set(exit, "mathFlowFence", exitMathFlowFence);
-  JS.set(exit, "mathFlowFenceMeta", exitMathFlowMeta);
-  JS.set(exit, "mathFlowValue", exitMathData);
-  JS.set(exit, "mathText", exitMathText);
-  JS.set(exit, "mathTextData", exitMathData);
-  JsValue extension = JS.object();
-  JS.set(extension, "enter", enter);
-  JS.set(extension, "exit", exit);
-  return extension;
+  return JS.object(
+    "enter", JS.object(
+      "mathFlow", enterMathFlow,
+      "mathFlowFenceMeta", enterMathFlowMeta,
+      "mathText", enterMathText
+    ),
+    "exit", JS.object(
+      "mathFlow", exitMathFlow,
+      "mathFlowFence", exitMathFlowFence,
+      "mathFlowFenceMeta", exitMathFlowMeta,
+      "mathFlowValue", exitMathData,
+      "mathText", exitMathText,
+      "mathTextData", exitMathData
+    )
+  );
 }

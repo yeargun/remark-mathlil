@@ -2,24 +2,18 @@ import { call1, objGet, undef } from "./host.lil";
 import { markdownSpace } from "./util-character.lil";
 
 export JsValue factorySpace(JsValue effects, JsValue ok, JsValue typ, JsValue max) {
-  JsValue st = JS.object();
+  float size = 0.0;
   float limit = 1.0 / 0.0;
   if (max.truthy()) {
     limit = JS.number(max) - 1.0;
   }
-  JS.set(st, "effects", effects);
-  JS.set(st, "ok", ok);
-  JS.set(st, "typ", typ);
-  JS.set(st, "limit", limit);
-  JS.set(st, "size", 0);
+  JsValue prefix = undef();
 
-  JsValue prefix = JS.method1((JsValue _self, JsValue code) => {
-    float size = JS.number(objGet(st, "size"));
-    float lim = JS.number(objGet(st, "limit"));
-    if (markdownSpace(code) && size < lim) {
-      JS.set(st, "size", size + 1.0);
+  prefix = JS.method1((JsValue _self, JsValue code) => {
+    if (markdownSpace(code) && size < limit) {
+      size = size + 1;
       call1(objGet(effects, "consume"), effects, code);
-      return objGet(st, "prefix");
+      return prefix;
     }
     call1(objGet(effects, "exit"), effects, typ);
     return call1(ok, undef(), code);
@@ -33,7 +27,5 @@ export JsValue factorySpace(JsValue effects, JsValue ok, JsValue typ, JsValue ma
     return call1(ok, undef(), code);
   });
 
-  JS.set(st, "prefix", prefix);
-  JS.set(st, "start", start);
   return start;
 }

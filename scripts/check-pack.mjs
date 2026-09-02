@@ -20,7 +20,8 @@ for (const path of required) {
 }
 const manifest = JSON.parse(readFileSync("package.json", "utf8"))
 if (manifest.name !== "@itslil/remark-math") throw new Error("unexpected package name")
-if (manifest.dependencies && Object.keys(manifest.dependencies).length) {
-  throw new Error("package must stay dependency-free")
+const dependencies = Object.keys(manifest.dependencies ?? {})
+if (dependencies.length !== 1 || dependencies[0] !== "@types/mdast") {
+  throw new Error("package must only depend on @types/mdast")
 }
 console.log(`npm pack: ${result.entryCount} files, ${result.size} bytes packed, ${result.unpackedSize} bytes unpacked`)

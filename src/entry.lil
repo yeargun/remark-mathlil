@@ -1,10 +1,15 @@
-import { ensureList, optionOrEmpty, push, undef } from "./host.lil";
+import { ensureList, push, undef } from "./host.lil";
 import { math } from "./syntax.lil";
 import { mathFromMarkdown } from "./from-markdown.lil";
 import { mathToMarkdown } from "./to-markdown.lil";
 
+JsValue emptyOptions = JS.object();
+
 JsValue remarkMathCall(JsValue self, JsValue options) {
-  JsValue settings = optionOrEmpty(options);
+  JsValue settings = emptyOptions;
+  if (options.truthy()) {
+    settings = options;
+  }
   JsValue data = JS.invoke(self, "data");
   push(ensureList(data, "micromarkExtensions"), math(settings));
   push(ensureList(data, "fromMarkdownExtensions"), mathFromMarkdown());
@@ -12,5 +17,5 @@ JsValue remarkMathCall(JsValue self, JsValue options) {
   return undef();
 }
 
-export JsValue remarkMath = JS.method1(remarkMathCall);
+JsValue remarkMath = JS.method1(remarkMathCall);
 export JsValue default = remarkMath;
