@@ -26,49 +26,61 @@
       "gzip9": 3745,
       "brotli11": 3315,
       "note": "esbuild bundle of the published package plus runtime deps",
-      "diagnostic": false
+      "diagnostic": false,
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "f80c4832481097f98289d5852b5fdff3a0b55f15d49dfb6d8e6397acf023d4c2"
     },
     {
       "id": "official-terser-mangle",
-      "name": "Official · Terser mangle on",
-      "raw": 6350,
-      "gzip9": 2324,
-      "brotli11": 2097,
+      "name": "Official \u00b7 Terser mangle on",
+      "raw": 6351,
+      "gzip9": 2327,
+      "brotli11": 2100,
       "note": "Terser compress of that graph, mangle: true",
-      "baseline": true
+      "baseline": true,
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
     },
     {
       "id": "official-terser-nomangle",
-      "name": "Official · Terser mangle off",
-      "raw": 9585,
-      "gzip9": 2727,
-      "brotli11": 2468,
-      "note": "Terser compress of that graph, mangle: false"
+      "name": "Official \u00b7 Terser mangle off",
+      "raw": 9586,
+      "gzip9": 2730,
+      "brotli11": 2471,
+      "note": "Terser compress of that graph, mangle: false",
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "87a860db884ed41ef724376c1b11aeec136f86f0e15fdeeb8e3daea7d02b39fd"
     },
     {
       "id": "official-esbuild",
-      "name": "Official · esbuild minify",
+      "name": "Official \u00b7 esbuild minify",
       "raw": 6559,
       "gzip9": 2546,
       "brotli11": 2308,
-      "note": "esbuild minify of that graph"
+      "note": "esbuild minify of that graph",
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b"
     },
     {
       "id": "itslil",
-      "name": "@itslil/remark-math · library",
-      "raw": 6372,
-      "gzip9": 2522,
-      "brotli11": 2287,
-      "note": "LilScript js-module, extern_fields true. The npm ESM.",
-      "primary": true
+      "name": "@itslil/remark-math \u00b7 library",
+      "raw": 6607,
+      "gzip9": 2506,
+      "brotli11": 2248,
+      "note": "Fresh packaged ESM, rebuilt with compiler 63c2896a71.",
+      "primary": true,
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
     },
     {
       "id": "itslil-closed",
-      "name": "@itslil/remark-math · closed",
-      "raw": 6697,
-      "gzip9": 2793,
-      "brotli11": 2541,
-      "note": "Same source, extern_fields false; diagnostic only"
+      "name": "@itslil/remark-math \u00b7 closed",
+      "raw": 6647,
+      "gzip9": 2603,
+      "brotli11": 2324,
+      "note": "Same source, extern_fields false; diagnostic only",
+      "measuredAt": "2026-09-10T13:59:49Z",
+      "artifactSha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
     }
   ],
   "throughput": [
@@ -77,5 +89,8 @@
       "name": "@itslil/remark-math",
       "documentMs": 0
     }
-  ]
+  ],
+  "sizeMeasuredAt": "2026-09-10T13:59:49Z",
+  "buildAudit": "./build-audit.json",
+  "runtimeEvidenceStatus": "Historical; runtime throughput was not republished as a measurement of this compiler."
 }

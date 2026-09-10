@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "name": "remark-mathlil",
+  "measuredAt": "2026-09-10T13:59:49Z",
+  "status": "verified",
+  "buildPassed": true,
+  "summary": "The fresh artifact was checked against the repository test command.",
+  "sourceCommit": "ade90295dc3a83c7ae7c8ab9c9c56ac907472ded",
+  "previousPublicCommit": "ade90295dc3a83c7ae7c8ab9c9c56ac907472ded",
+  "compiler": {
+    "commit": "63c2896a71e60cbcca7870fe979f9d6ecaff3452",
+    "sha256": "2319462ef7d858c8e2a5a767260aa4f80d325e0045afa0cc86cc122d1299b059",
+    "profile": "release",
+    "dirty": false
+  },
+  "machine": {
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "logicalCpus": 16,
+    "affinityCpus": 16,
+    "memoryBytes": 33648431104,
+    "os": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1022-azure",
+    "architecture": "x86_64",
+    "node": "v22.23.2",
+    "rayonThreads": 16,
+    "provider": "Azure",
+    "instanceClass": "Standard_D16als_v7",
+    "parallelPortBuildsOnMachine": 1,
+    "loadAtStart": [
+      7.04443359375,
+      5.24853515625,
+      2.5712890625
+    ],
+    "loadAtEnd": [
+      5.92626953125,
+      5.0888671875,
+      2.56103515625
+    ],
+    "concurrencyNote": "The audit scheduled one port per worker, but this is a shared pool. Outside compiler jobs were observed during the run; timings are contextual wall times, not controlled speedup benchmarks."
+  },
+  "upstream": {
+    "name": "remark-mathlil",
+    "package": "remark-math",
+    "pinned": "6.0.0",
+    "latest": "6.0.0",
+    "source": "https://www.npmjs.com/package/remark-math"
+  },
+  "comparisonScope": "remark-math@6.0.0 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline Sizes use canonical zlib 1.3.1 gzip-9 and Google Brotli 1.1.0 quality 11.",
+  "sizes": {
+    "previous": {
+      "id": "itslil",
+      "name": "@itslil/remark-math \u00b7 library",
+      "raw": 6372,
+      "gzip9": 2522,
+      "brotli11": 2287,
+      "note": "LilScript js-module, extern_fields true. The npm ESM.",
+      "primary": true
+    },
+    "current": {
+      "path": "dist/remark-math.esm.js",
+      "raw": 6607,
+      "gzip9": 2506,
+      "brotli11": 2248,
+      "sha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
+    },
+    "upstream": {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 6351,
+      "gzip9": 2327,
+      "brotli11": 2100,
+      "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+    }
+  },
+  "officialArtifacts": [
+    {
+      "path": ".page-audit/upstream/official.terser-nomangle.js",
+      "raw": 9586,
+      "gzip9": 2730,
+      "brotli11": 2471,
+      "sha256": "87a860db884ed41ef724376c1b11aeec136f86f0e15fdeeb8e3daea7d02b39fd"
+    },
+    {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 6351,
+      "gzip9": 2327,
+      "brotli11": 2100,
+      "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+    },
+    {
+      "path": ".page-audit/upstream/official.unminified.js",
+      "raw": 15294,
+      "gzip9": 3745,
+      "brotli11": 3315,
+      "sha256": "f80c4832481097f98289d5852b5fdff3a0b55f15d49dfb6d8e6397acf023d4c2"
+    },
+    {
+      "path": ".page-audit/upstream/official.esbuild.js",
+      "raw": 6559,
+      "gzip9": 2546,
+      "brotli11": 2308,
+      "sha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b"
+    }
+  ],
+  "candidateArtifacts": [
+    {
+      "path": "dist/remark-math.esm.js",
+      "raw": 6607,
+      "gzip9": 2506,
+      "brotli11": 2248,
+      "sha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
+    },
+    {
+      "path": "dist/remark-math.closed.js",
+      "raw": 6647,
+      "gzip9": 2603,
+      "brotli11": 2324,
+      "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+    },
+    {
+      "path": "dist/remark-math.cjs",
+      "raw": 8062,
+      "gzip9": 3060,
+      "brotli11": 2732,
+      "sha256": "0b51167a8edc23923fccc76adcb108b23045463edd09f7e8cc821799ddbba22d"
+    },
+    {
+      "path": "dist/remark-math.raw.js",
+      "raw": 6523,
+      "gzip9": 2445,
+      "brotli11": 2194,
+      "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+    },
+    {
+      "path": "dist/remark-math.umd.js",
+      "raw": 8157,
+      "gzip9": 3091,
+      "brotli11": 2761,
+      "sha256": "c8fb3ec178ba24fe4a0cc2ad31e4026653e2ccd488325e7723de84cc63a3c822"
+    },
+    {
+      "path": ".page-audit/upstream/official.esbuild.js",
+      "raw": 6559,
+      "gzip9": 2546,
+      "brotli11": 2308,
+      "sha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b"
+    },
+    {
+      "path": ".page-audit/upstream/official.terser-nomangle.js",
+      "raw": 9586,
+      "gzip9": 2730,
+      "brotli11": 2471,
+      "sha256": "87a860db884ed41ef724376c1b11aeec136f86f0e15fdeeb8e3daea7d02b39fd"
+    },
+    {
+      "path": ".page-audit/upstream/official.unminified.js",
+      "raw": 15294,
+      "gzip9": 3745,
+      "brotli11": 3315,
+      "sha256": "f80c4832481097f98289d5852b5fdff3a0b55f15d49dfb6d8e6397acf023d4c2"
+    },
+    {
+      "path": ".page-audit/upstream/official.esm.js",
+      "raw": 6351,
+      "gzip9": 2327,
+      "brotli11": 2100,
+      "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+    }
+  ],
+  "timing": {
+    "primaryCompilerSeconds": 6.953902006149292,
+    "primaryScope": "One real compiler process, including code generation and codec-guided search; excludes subsequent package wrapping.",
+    "packageSeconds": 7.8898699930000475,
+    "packageScope": "node scripts/build.mjs --compile --force; 2 successful compiler invocations plus package generation.",
+    "upstreamSeconds": 0.068929487,
+    "upstreamScope": "remark-math@6.0.0 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+    "protocol": "Same shared worker for both lanes; one fresh LilScript package build; median of three sequential upstream ESM builds (PlayCanvas records one native reference build). Outside compiler jobs were observed in the pool, so contention is not excluded. Dependencies, tests and compression measurement are outside these build times.",
+    "upstreamSamples": [
+      {
+        "bundleSeconds": 0.014695697000000002,
+        "wallSeconds": 0.095692845
+      },
+      {
+        "bundleSeconds": 0.016630435999999974,
+        "wallSeconds": 0.068929487
+      },
+      {
+        "bundleSeconds": 0.017590395999999998,
+        "wallSeconds": 0.05734731099999996
+      }
+    ]
+  },
+  "behavior": {
+    "command": "npm run check:types && node --test test/*.test.mjs test/official/test.js",
+    "summary": "Repository test command passed (exit 0). # tests 60 \u00b7 # pass 60 \u00b7 # fail 0",
+    "before": {
+      "exitCode": 0,
+      "failures": [],
+      "logSha256": "5dd3e15649fc6c281df4f311e19e9195f0f7857b1b59164eb517534fdf3f904a"
+    },
+    "after": {
+      "exitCode": 0,
+      "failures": [],
+      "tail": "06: should require a closing delimiter\n    ok 35 - should do markdown-it-katex\\#06: should require a closing delimiter\n      ---\n      duration_ms: 0.215653\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#07: paragraph break in inline math is not allowed\n    ok 36 - should do markdown-it-katex\\#07: paragraph break in inline math is not allowed\n      ---\n      duration_ms: 0.397744\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#08: inline math with apparent markup should not be processed\n    ok 37 - should do markdown-it-katex\\#08: inline math with apparent markup should not be processed\n      ---\n      duration_ms: 0.710944\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#09: block math can be indented up to 3 spaces\n    ok 38 - should do markdown-it-katex\\#09: block math can be indented up to 3 spaces\n      ---\n      duration_ms: 0.243124\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#10: \u2026but 4 means a code block\n    ok 39 - should do markdown-it-katex\\#10: \u2026but 4 means a code block\n      ---\n      duration_ms: 0.377965\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#11: multiline inline math\n    ok 40 - should do markdown-it-katex\\#11: multiline inline math\n      ---\n      duration_ms: 0.361381\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#12: multiline display math\n    ok 41 - should do markdown-it-katex\\#12: multiline display math\n      ---\n      duration_ms: 0.255342\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#13: text can immediately follow inline math\n    ok 42 - should do markdown-it-katex\\#13: text can immediately follow inline math\n      ---\n      duration_ms: 0.21406\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#14: display math self-closes at the end of document\n    ok 43 - should do markdown-it-katex\\#14: display math self-closes at the end of document\n      ---\n      duration_ms: 0.177676\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#15: display and inline math can appear in lists\n    ok 44 - should do markdown-it-katex\\#15: display and inline math can appear in lists\n      ---\n      duration_ms: 0.924522\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#16: display math can be written in one line (deviation)\n    ok 45 - should do markdown-it-katex\\#16: display math can be written in one line (deviation)\n      ---\n      duration_ms: 0.250695\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#17: \u2026or on multiple lines with expression starting and ending on delimited lines (deviation)\n    ok 46 - should do markdown-it-katex\\#17: \u2026or on multiple lines with expression starting and ending on delimited lines (deviation)\n      ---\n      duration_ms: 0.218186\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#18: escaped delimiters should not render math (deviated)\n    ok 47 - should do markdown-it-katex\\#18: escaped delimiters should not render math (deviated)\n      ---\n      duration_ms: 0.458115\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#19: numbers can not follow closing inline math (deviated)\n    ok 48 - should do markdown-it-katex\\#19: numbers can not follow closing inline math (deviated)\n      ---\n      duration_ms: 0.32779\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#20: require non whitespace to right of opening inline math (deviated)\n    ok 49 - should do markdown-it-katex\\#20: require non whitespace to right of opening inline math (deviated)\n      ---\n      duration_ms: 0.225106\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#21: require non whitespace to left of closing inline math (deviated)\n    ok 50 - should do markdown-it-katex\\#21: require non whitespace to left of closing inline math (deviated)\n      ---\n      duration_ms: 0.237545\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#23: escaped delimiters in math mode (deviated)\n    ok 51 - should do markdown-it-katex\\#23: escaped delimiters in math mode (deviated)\n      ---\n      duration_ms: 0.222223\n      type: 'test'\n      ...\n    # Subtest: should do markdown-it-katex\\#24: multiple escaped delimiters in math module (deviated)\n    ok 52 - should do markdown-it-katex\\#24: multiple escaped delimiters in math module (deviated)\n      ---\n      duration_ms: 0.418976\n      type: 'test'\n      ...\n    1..52\nok 3 - remarkMath\n  ---\n  duration_ms: 28.685459\n  type: 'test'\n  ...\n# Subtest: site\n    # Subtest: has a markedlil-style lab with receipts\n    ok 1 - has a markedlil-style lab with receipts\n      ---\n      duration_ms: 0.502702\n      type: 'test'\n      ...\n    1..1\nok 4 - site\n  ---\n  duration_ms: 1.003281\n  type: 'suite'\n  ...\n1..4\n# tests 60\n# suites 3\n# pass 60\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 126.864854\n",
+      "logSha256": "518944a678f81168db5d74db8ffe0c526dc3e0486d4b85eaa39660245858f1d8"
+    }
+  },
+  "findings": [
+    "Published-to-fresh Brotli drift: -39 bytes (-1.71%). This includes port source/config changes and compiler changes."
+  ],
+  "primaryArtifact": "dist/remark-math.esm.js",
+  "beforePage": {
+    "url": "https://yeargun.github.io/remark-mathlil/",
+    "status": 200,
+    "sha256": "93497af71228d5b7ca64bbeac9bf529ef79e0ca1038ea9a2ee89753fce0f49b7",
+    "lastModified": "Wed, 02 Sep 2026 15:25:19 GMT"
+  },
+  "codecSha256": "9257fd055728895c11b9c4b0d882895d7d11bb3dd3495f560123879ca2bc3cd6",
+  "publicationArtifacts": [
+    {
+      "path": "dist/remark-math.esm.js",
+      "sha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
+    },
+    {
+      "path": "dist/remark-math.closed.js",
+      "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+    },
+    {
+      "path": "dist/remark-math.cjs",
+      "sha256": "0b51167a8edc23923fccc76adcb108b23045463edd09f7e8cc821799ddbba22d"
+    },
+    {
+      "path": "dist/remark-math.umd.js",
+      "sha256": "c8fb3ec178ba24fe4a0cc2ad31e4026653e2ccd488325e7723de84cc63a3c822"
+    }
+  ],
+  "publicationPolicy": "Promote freshly tested distribution",
+  "publicationBase": "ade90295dc3a83c7ae7c8ab9c9c56ac907472ded",
+  "publicationSourceFingerprint": "ecd32ef92bc0055868d9ad4a1828427580497640f8ef0472774cc882a9917fa2"
+}

@@ -1,5 +1,9 @@
 # @itslil/remark-math
 
+<!-- current-build-audit -->
+**Build audit, 2026-09-10:** [verified; compiler, machine, build times, version gaps and behavior checks](https://yeargun.github.io/remark-mathlil/#build-audit). The [JSON receipt](site/build-audit.json) records the current comparison; older benchmark prose retains its original scope.
+
+
 Official [`remark-math@6.0.0`](https://github.com/remarkjs/remark-math) algorithms rewritten in LilScript. Full test suite 60/60. Not affiliated with upstream.
 
 **Site:** [yeargun.github.io/remark-mathlil/](https://yeargun.github.io/remark-mathlil/)
