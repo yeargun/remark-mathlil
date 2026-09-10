@@ -1,0 +1,78 @@
+{
+  "source": {
+    "repository": "https://github.com/remarkjs/remark-math.git",
+    "commit": "d5d0660b150810a535bbb07eac6cc96a4510aa24",
+    "package": "remark-math",
+    "version": "6.0.0",
+    "directory": "packages/remark-math"
+  },
+  "entry": "packages/remark-math/index.js",
+  "scope": "remark-math@6.0.0 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+  "external": [],
+  "samples": [
+    {
+      "bundleSeconds": 0.019785022999999995,
+      "wallSeconds": 0.088228548
+    },
+    {
+      "bundleSeconds": 0.015367435999999998,
+      "wallSeconds": 0.05675135599999999
+    },
+    {
+      "bundleSeconds": 0.014525536000000016,
+      "wallSeconds": 0.047978155000000015
+    }
+  ],
+  "medianSeconds": 0.05675135599999999,
+  "toolchain": {
+    "esbuild": "0.28.1",
+    "terser": "5.51.2"
+  },
+  "artifacts": [
+    {
+      "path": "original.esm.js",
+      "raw": 6351,
+      "gzip9": 2327,
+      "brotli11": 2100,
+      "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+    },
+    {
+      "path": "original.unminified.js",
+      "raw": 15290,
+      "gzip9": 3751,
+      "brotli11": 3319,
+      "sha256": "8658dd9720d562f8fce6bf01f70d1dd8098550f52b9763f3e76b3ae4a06a64b0"
+    },
+    {
+      "path": "original.terser-nomangle.js",
+      "raw": 9586,
+      "gzip9": 2730,
+      "brotli11": 2471,
+      "sha256": "87a860db884ed41ef724376c1b11aeec136f86f0e15fdeeb8e3daea7d02b39fd"
+    },
+    {
+      "path": "original.esbuild.js",
+      "raw": 6559,
+      "gzip9": 2546,
+      "brotli11": 2308,
+      "sha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b"
+    }
+  ],
+  "inputs": [
+    "node_modules/devlop/lib/default.js",
+    "node_modules/longest-streak/index.js",
+    "node_modules/mdast-util-math/lib/index.js",
+    "node_modules/mdast-util-math/index.js",
+    "node_modules/micromark-util-character/index.js",
+    "node_modules/micromark-factory-space/index.js",
+    "node_modules/micromark-extension-math/lib/math-flow.js",
+    "node_modules/micromark-extension-math/lib/math-text.js",
+    "node_modules/micromark-extension-math/lib/syntax.js",
+    "node_modules/katex/dist/katex.mjs",
+    "node_modules/micromark-extension-math/lib/html.js",
+    "node_modules/micromark-extension-math/index.js",
+    "packages/remark-math/lib/index.js",
+    "packages/remark-math/index.js",
+    "public-esm-entry.mjs"
+  ]
+}

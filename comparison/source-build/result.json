@@ -1,0 +1,634 @@
+{
+  "schemaVersion": 1,
+  "name": "remark-mathlil",
+  "startedAt": "2026-09-10T20:39:22Z",
+  "machine": {
+    "provider": "Azure",
+    "instanceClass": "Standard_D16als_v7",
+    "cpu": "AMD EPYC 9V45 96-Core Processor",
+    "logicalCpus": 16,
+    "memoryBytes": 33648431104,
+    "os": "Ubuntu 24.04.4 LTS",
+    "kernel": "6.17.0-1022-azure",
+    "node": "v24.11.1",
+    "rayonThreads": 8,
+    "loadAtStart": [
+      2.72509765625,
+      1.93896484375,
+      1.966796875
+    ],
+    "loadAtEnd": [
+      3.25048828125,
+      2.19189453125,
+      2.0517578125
+    ]
+  },
+  "compiler": {
+    "commit": "4dc4e3337d9ffd758d65e3852682d6e13d9331c1",
+    "sha256": "0616048498eb9eb2e4bd75b39e8e6a083733ada647e16108edfee30ad183beeb"
+  },
+  "source": {
+    "repository": "https://github.com/remarkjs/remark-math.git",
+    "commit": "d5d0660b150810a535bbb07eac6cc96a4510aa24",
+    "package": "remark-math",
+    "version": "6.0.0",
+    "directory": "packages/remark-math"
+  },
+  "portSource": {
+    "commit": "ade90295dc3a83c7ae7c8ab9c9c56ac907472ded",
+    "snapshot": "/tmp/lilscript-page-refresh-20260910/current/remark-mathlil"
+  },
+  "steps": {
+    "original-install": {
+      "command": [
+        "npm",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 9.430791456999941,
+      "cpuSeconds": 9.723868,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-install.log",
+      "logSha256": "0a5203c95c5a0987ac979d1dd6bafb8d50bd4578031366b7248c100aa2258392",
+      "tail": "npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\nnpm warn deprecated figgy-pudding@3.5.2: This module is no longer supported.\nnpm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\nnpm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\nnpm warn deprecated libnpmconfig@1.2.1: This module is not used anymore. npm config is parsed by npm itself and by @npmcli/config\nnpm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated glob@8.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\nnpm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead\nnpm warn deprecated whatwg-encoding@2.0.0: Use @exodus/bytes instead for a more spec-conformant and faster implementation\nnpm warn deprecated domexception@4.0.0: Use your platform's native DOMException instead\nnpm warn deprecated @xmldom/xmldom@0.9.10: this version has critical issues, please update to the latest version\nnpm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me\nnpm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n\nadded 1725 packages in 9s\n"
+    },
+    "lilscript-install": {
+      "command": [
+        "npm",
+        "ci",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "port",
+      "wallSeconds": 0.614695909999682,
+      "cpuSeconds": 0.6764760000000005,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-install.log",
+      "logSha256": "2767210653d7bdcc77a3441325b3dbd62c6cd317f25d6dd4bdee2b989925c3a2",
+      "tail": "\nadded 96 packages in 542ms\n"
+    },
+    "original-build-1": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.7670992260000276,
+      "cpuSeconds": 3.4351050000000005,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-1.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    },
+    "lilscript-build-1": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.178071368999554,
+      "cpuSeconds": 26.229078,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-1.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072774.5375009,
+          "wallSeconds": 7.2737016677856445,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072781.8355389,
+          "wallSeconds": 0.778731107711792,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    },
+    "lilscript-build-2": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.127839634999873,
+      "cpuSeconds": 26.109360999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-2.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072782.7231379,
+          "wallSeconds": 7.244513034820557,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072789.9918098,
+          "wallSeconds": 0.7771236896514893,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    },
+    "original-build-2": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.7671732150001844,
+      "cpuSeconds": 3.404955000000009,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-2.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    },
+    "original-build-3": {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.767283922000388,
+      "cpuSeconds": 3.473779999999995,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-3.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    },
+    "lilscript-build-3": {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.177711061999617,
+      "cpuSeconds": 26.235598999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-3.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072794.4417317,
+          "wallSeconds": 7.296238660812378,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072801.7614417,
+          "wallSeconds": 0.7796776294708252,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    },
+    "original-esm": {
+      "command": [
+        "node",
+        "/home/lilfarm/source-perf-20260910/tools/source-esm.mjs",
+        "/home/lilfarm/source-perf-20260910",
+        "remark-mathlil"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 0.36425495999992563,
+      "cpuSeconds": 0.5298439999999962,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-esm.log",
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tail": ""
+    },
+    "lilscript-tests": {
+      "command": [
+        "bash",
+        "-c",
+        "npm run check:types && node --test test/*.test.mjs test/official/test.js"
+      ],
+      "cwd": "port",
+      "wallSeconds": 0.8148893319994386,
+      "cpuSeconds": 1.5355079999999894,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-tests.log",
+      "logSha256": "03485d9219279b4da8c4ee93773c57e9c220a41ade96471d37da77a299c7ee85",
+      "tail": "fter a paragraph (0.853155ms)\n  \u2714 should support inline math with double dollars (0.277598ms)\n  \u2714 should support block math with triple dollars (0.236507ms)\n  \u2714 should support indented block math (0.303027ms)\n  \u2714 should stringify inline and block math (1.503947ms)\n  \u2714 should support `singleDollarTextMath: false` (1) (0.518942ms)\n  \u2714 should support `singleDollarTextMath: false` (2) (1.283704ms)\n  \u2714 should stringify math in a blockquote (0.505792ms)\n  \u2714 should support an opening fence w/ meta, w/o closing fence (0.292621ms)\n  \u2714 should support `meta` (0.286892ms)\n  \u2714 should include values after the opening fence (0.282816ms)\n  \u2714 should not support values before the closing fence (0.228284ms)\n  \u2714 should include values before the closing fence (except for spacing #2) (0.202225ms)\n  \u2714 should exclude spacing after the closing fence (0.209195ms)\n  \u2714 should not affect the next block (0.387213ms)\n  \u2714 should support two dollar signs on inline math (0.188323ms)\n  \u2714 should stringify a tree (0.215024ms)\n  \u2714 should stringify inline math with double dollars using one dollar by default (0.206651ms)\n  \u2714 should stringify inline math with double dollars using one dollar (0.179541ms)\n  \u2714 should do markdown-it-katex#01 (0.199591ms)\n  \u2714 should do markdown-it-katex#02 (deviation) (0.205821ms)\n  \u2714 should do markdown-it-katex#03: no whitespace before and after is fine (0.251208ms)\n  \u2714 should do markdown-it-katex#04: even when it starts with a negative sign (0.733145ms)\n  \u2714 should do markdown-it-katex#05: shouldn\u2019t render empty content (0.215946ms)\n  \u2714 should do markdown-it-katex#06: should require a closing delimiter (0.182626ms)\n  \u2714 should do markdown-it-katex#07: paragraph break in inline math is not allowed (0.281323ms)\n  \u2714 should do markdown-it-katex#08: inline math with apparent markup should not be processed (0.215565ms)\n  \u2714 should do markdown-it-katex#09: block math can be indented up to 3 spaces (0.183426ms)\n  \u2714 should do markdown-it-katex#10: \u2026but 4 means a code block (0.354525ms)\n  \u2714 should do markdown-it-katex#11: multiline inline math (0.360433ms)\n  \u2714 should do markdown-it-katex#12: multiline display math (0.202846ms)\n  \u2714 should do markdown-it-katex#13: text can immediately follow inline math (0.202565ms)\n  \u2714 should do markdown-it-katex#14: display math self-closes at the end of document (0.169195ms)\n  \u2714 should do markdown-it-katex#15: display and inline math can appear in lists (0.801428ms)\n  \u2714 should do markdown-it-katex#16: display math can be written in one line (deviation) (0.203016ms)\n  \u2714 should do markdown-it-katex#17: \u2026or on multiple lines with expression starting and ending on delimited lines (deviation) (0.206531ms)\n  \u2714 should do markdown-it-katex#18: escaped delimiters should not render math (deviated) (0.421345ms)\n  \u2714 should do markdown-it-katex#19: numbers can not follow closing inline math (deviated) (0.244278ms)\n  \u2714 should do markdown-it-katex#20: require non whitespace to right of opening inline math (deviated) (0.204037ms)\n  \u2714 should do markdown-it-katex#21: require non whitespace to left of closing inline math (deviated) (0.232741ms)\n  \u2714 should do markdown-it-katex#23: escaped delimiters in math mode (deviated) (0.224037ms)\n  \u2714 should do markdown-it-katex#24: multiple escaped delimiters in math module (deviated) (0.329927ms)\n\u2714 remarkMath (24.79335ms)\n\u25b6 site\n  \u2714 has a markedlil-style lab with receipts (0.664181ms)\n\u2714 site (1.397406ms)\n\u2139 tests 60\n\u2139 suites 3\n\u2139 pass 60\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 125.751699\n"
+    }
+  },
+  "nativeBuilds": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.7670992260000276,
+      "cpuSeconds": 3.4351050000000005,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-1.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.7671732150001844,
+      "cpuSeconds": 3.404955000000009,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-2.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build"
+      ],
+      "cwd": "upstream",
+      "wallSeconds": 1.767283922000388,
+      "cpuSeconds": 3.473779999999995,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "original-build-3.log",
+      "logSha256": "e230ae5df428e85141cbaf3594498750b77bcfbfd60648e3e19a880ee5a5d930",
+      "tail": "\n> build\n> tsc --build --clean && tsc --build && type-coverage\n\n(1829 / 1829) 100.00%\ntype-coverage success.\n"
+    }
+  ],
+  "lilscriptBuilds": [
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.178071368999554,
+      "cpuSeconds": 26.229078,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-1.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072774.5375009,
+          "wallSeconds": 7.2737016677856445,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072781.8355389,
+          "wallSeconds": 0.778731107711792,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    },
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.127839634999873,
+      "cpuSeconds": 26.109360999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-2.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072782.7231379,
+          "wallSeconds": 7.244513034820557,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072789.9918098,
+          "wallSeconds": 0.7771236896514893,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    },
+    {
+      "command": [
+        "bash",
+        "-c",
+        "node scripts/build.mjs --compile --force"
+      ],
+      "cwd": "port",
+      "wallSeconds": 8.177711061999617,
+      "cpuSeconds": 26.235598999999993,
+      "exitCode": 0,
+      "timedOut": false,
+      "log": "lilscript-build-3.log",
+      "logSha256": "a64e83b805e37e6f56c4745f7fc2d1d2dbd7ae071b75c2f9177efb0bef36417c",
+      "tail": "wrote dist/remark-math.esm.js, dist/remark-math.cjs, dist/remark-math.umd.js, dist/remark-math.closed.js\n",
+      "invocations": [
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js"
+          ],
+          "startedAt": 1789072794.4417317,
+          "wallSeconds": 7.296238660812378,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.raw.js",
+          "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+        },
+        {
+          "args": [
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/src/entry.lil",
+            "--target",
+            "js-module",
+            "--config",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/lilscript.closed.toml",
+            "-o",
+            "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js"
+          ],
+          "startedAt": 1789072801.7614417,
+          "wallSeconds": 0.7796776294708252,
+          "exitCode": 0,
+          "output": "/home/lilfarm/source-perf-20260910/ports/remark-mathlil/dist/remark-math.closed.js",
+          "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+        }
+      ]
+    }
+  ],
+  "protocol": {
+    "repetitions": 3,
+    "cleanOutputs": true,
+    "dependencyInstallationTimedSeparately": true,
+    "sourceArchives": "Pinned Git checkouts; original repository package build commands, followed by production ESM assembly.",
+    "workerUse": "Both implementations use the same machine and Node version. This shared build pool also runs unrelated jobs; timings are contextual wall times, with CPU time recorded separately."
+  },
+  "esm": {
+    "source": {
+      "repository": "https://github.com/remarkjs/remark-math.git",
+      "commit": "d5d0660b150810a535bbb07eac6cc96a4510aa24",
+      "package": "remark-math",
+      "version": "6.0.0",
+      "directory": "packages/remark-math"
+    },
+    "entry": "packages/remark-math/index.js",
+    "scope": "remark-math@6.0.0 public ESM runtime graph; dependency installation excluded; this is a comparison bundle build, not the upstream vendor release pipeline",
+    "external": [],
+    "samples": [
+      {
+        "bundleSeconds": 0.019785022999999995,
+        "wallSeconds": 0.088228548
+      },
+      {
+        "bundleSeconds": 0.015367435999999998,
+        "wallSeconds": 0.05675135599999999
+      },
+      {
+        "bundleSeconds": 0.014525536000000016,
+        "wallSeconds": 0.047978155000000015
+      }
+    ],
+    "medianSeconds": 0.05675135599999999,
+    "toolchain": {
+      "esbuild": "0.28.1",
+      "terser": "5.51.2"
+    },
+    "artifacts": [
+      {
+        "path": "original.esm.js",
+        "raw": 6351,
+        "gzip9": 2327,
+        "brotli11": 2100,
+        "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+      },
+      {
+        "path": "original.unminified.js",
+        "raw": 15290,
+        "gzip9": 3751,
+        "brotli11": 3319,
+        "sha256": "8658dd9720d562f8fce6bf01f70d1dd8098550f52b9763f3e76b3ae4a06a64b0"
+      },
+      {
+        "path": "original.terser-nomangle.js",
+        "raw": 9586,
+        "gzip9": 2730,
+        "brotli11": 2471,
+        "sha256": "87a860db884ed41ef724376c1b11aeec136f86f0e15fdeeb8e3daea7d02b39fd"
+      },
+      {
+        "path": "original.esbuild.js",
+        "raw": 6559,
+        "gzip9": 2546,
+        "brotli11": 2308,
+        "sha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b"
+      }
+    ],
+    "inputs": [
+      "node_modules/devlop/lib/default.js",
+      "node_modules/longest-streak/index.js",
+      "node_modules/mdast-util-math/lib/index.js",
+      "node_modules/mdast-util-math/index.js",
+      "node_modules/micromark-util-character/index.js",
+      "node_modules/micromark-factory-space/index.js",
+      "node_modules/micromark-extension-math/lib/math-flow.js",
+      "node_modules/micromark-extension-math/lib/math-text.js",
+      "node_modules/micromark-extension-math/lib/syntax.js",
+      "node_modules/katex/dist/katex.mjs",
+      "node_modules/micromark-extension-math/lib/html.js",
+      "node_modules/micromark-extension-math/index.js",
+      "packages/remark-math/lib/index.js",
+      "packages/remark-math/index.js",
+      "public-esm-entry.mjs"
+    ]
+  },
+  "lilscriptArtifacts": [
+    {
+      "path": "dist/remark-math.esm.js",
+      "raw": 6607,
+      "gzip9": 2506,
+      "brotli11": 2248,
+      "sha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
+    },
+    {
+      "path": "dist/remark-math.closed.js",
+      "raw": 6647,
+      "gzip9": 2603,
+      "brotli11": 2324,
+      "sha256": "02cdfc245f9a2af7cc37cbfab6d6c1ce0f2af548a8555bf6a9c5e62f9db75eb0"
+    },
+    {
+      "path": "dist/remark-math.cjs",
+      "raw": 8062,
+      "gzip9": 3060,
+      "brotli11": 2732,
+      "sha256": "0b51167a8edc23923fccc76adcb108b23045463edd09f7e8cc821799ddbba22d"
+    },
+    {
+      "path": "dist/remark-math.raw.js",
+      "raw": 6523,
+      "gzip9": 2445,
+      "brotli11": 2194,
+      "sha256": "63e3707b64e900bcc1dcabf2765e3cd4535ef438b062121e4d1e04dfbf42588c"
+    },
+    {
+      "path": "dist/remark-math.umd.js",
+      "raw": 8157,
+      "gzip9": 3091,
+      "brotli11": 2761,
+      "sha256": "c8fb3ec178ba24fe4a0cc2ad31e4026653e2ccd488325e7723de84cc63a3c822"
+    }
+  ],
+  "nativeBuildsSummary": {
+    "samples": 3,
+    "successful": 3,
+    "medianSeconds": 1.7671732150001844,
+    "minimumSeconds": 1.7670992260000276,
+    "maximumSeconds": 1.767283922000388
+  },
+  "lilscriptBuildsSummary": {
+    "samples": 3,
+    "successful": 3,
+    "medianSeconds": 8.177711061999617,
+    "minimumSeconds": 8.127839634999873,
+    "maximumSeconds": 8.178071368999554
+  },
+  "status": "complete",
+  "finishedAt": "2026-09-10T20:40:03Z",
+  "workerIp": "10.1.0.18"
+}
