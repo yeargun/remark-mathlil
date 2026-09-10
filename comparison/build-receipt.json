@@ -235,5 +235,15 @@
   ],
   "publicationPolicy": "Promote freshly tested distribution",
   "publicationBase": "ade90295dc3a83c7ae7c8ab9c9c56ac907472ded",
-  "publicationSourceFingerprint": "ecd32ef92bc0055868d9ad4a1828427580497640f8ef0472774cc882a9917fa2"
+  "publicationSourceFingerprint": "ecd32ef92bc0055868d9ad4a1828427580497640f8ef0472774cc882a9917fa2",
+  "comparisonArtifacts": [
+    {
+      "path": "site/esm-comparison/lilscript.js",
+      "sha256": "7b10a4657eb2753bc5abfd9db9a25663a07c3d4e0beb6a6419d529e412183b5a"
+    },
+    {
+      "path": "site/esm-comparison/original.js",
+      "sha256": "58e4c6ca590fde1f6e40a86e824df7daf791fa27ed97b543e9404b23a9e25eb5"
+    }
+  ]
 }
