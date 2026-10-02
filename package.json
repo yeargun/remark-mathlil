@@ -55,7 +55,13 @@
     "NOTICE.md",
     "README.md"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./dist/remark-math.cjs",
+    "./dist/remark-math.closed.js",
+    "./dist/remark-math.esm.js",
+    "./dist/remark-math.raw.js",
+    "./dist/remark-math.umd.js"
+  ],
   "engines": {
     "node": ">=18"
   },
