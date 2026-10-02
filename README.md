@@ -18,3 +18,9 @@ Two compiles ship from the same `.lil` source:
 You publish the library lane. `dist/remark-math.closed.js` is diagnostic only.
 
 The LilScript compiler lives next door at `../lilscript`.
+
+### Running the checks
+
+`npm run test:build` builds the package and runs its tests. After an explicit
+`npm run build`, use `npm test` to test those artifacts without rebuilding them.
+This also keeps the development and production files available to the same suite.

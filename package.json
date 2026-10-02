@@ -68,11 +68,12 @@
   "scripts": {
     "build": "node scripts/build.mjs --compile",
     "build:site": "node scripts/build-site.mjs",
-    "test": "npm run build && npm run check:types && node --test test/*.test.mjs test/official/test.js",
+    "test": "npm run check:types && node --test-concurrency=1 --test test/*.test.mjs test/official/test.js",
     "check:types": "tsc --noEmit --strict --exactOptionalPropertyTypes --module NodeNext --moduleResolution NodeNext --target ES2022 test/types.test.ts",
-    "check:site": "npm run build:site && node --test test/site.test.mjs",
+    "check:site": "npm run build:site && node --test-concurrency=1 --test test/site.test.mjs",
     "check:pack": "node scripts/check-pack.mjs",
-    "prepublishOnly": "npm test && npm run check:pack && npm run check:site"
+    "prepublishOnly": "npm run test:build && npm run check:pack && npm run check:site",
+    "test:build": "npm run build && npm test"
   },
   "dependencies": {
     "@types/mdast": "^4.0.0"
