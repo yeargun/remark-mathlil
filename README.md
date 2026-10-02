@@ -20,3 +20,8 @@ Two compiles ship from the same `.lil` source:
 You publish the library lane. `dist/remark-math.closed.js` is diagnostic only.
 
 The LilScript compiler lives next door at `../lilscript`.
+
+
+## Comparison with the original
+
+See [COMPARISON.md](COMPARISON.md) for current size and build-time comparisons against minified upstream.
