@@ -26,9 +26,7 @@ JsValue tokenizeNonLazyContinuation = JS.method3((JsValue self, JsValue effects,
   return start;
 });
 
-JsValue nonLazyContinuation = JS.object();
-JS.set(nonLazyContinuation, "tokenize", tokenizeNonLazyContinuation);
-JS.set(nonLazyContinuation, "partial", true);
+JsValue nonLazyContinuation = JS.object("tokenize", tokenizeNonLazyContinuation, "partial", true);
 
 JsValue tokenizeMathFenced = JS.method3((JsValue self, JsValue effects, JsValue ok, JsValue nok) => {
   JsValue[] events = JS.assume(objGet(self, "events"));
@@ -83,9 +81,7 @@ JsValue tokenizeMathFenced = JS.method3((JsValue self, JsValue effects, JsValue 
     return factorySpace(closeEffects, beforeSequenceClose, tLinePrefix, max);
   });
 
-  JsValue closeConstruct = JS.object();
-  JS.set(closeConstruct, "tokenize", tokenizeClosingFence);
-  JS.set(closeConstruct, "partial", true);
+  JsValue closeConstruct = JS.object("tokenize", tokenizeClosingFence, "partial", true);
 
   JsValue after = JS.method1((JsValue _s, JsValue code) => {
     call1(objGet(effects, "exit"), effects, tMathFlow);
@@ -149,8 +145,7 @@ JsValue tokenizeMathFenced = JS.method3((JsValue self, JsValue effects, JsValue 
       return call1(metaAfter, undef(), code);
     }
     call1(objGet(effects, "enter"), effects, tMathFlowFenceMeta);
-    JsValue fields = JS.object();
-    JS.set(fields, "contentType", kContentTypeString);
+    JsValue fields = JS.object("contentType", kContentTypeString);
     call2(objGet(effects, "enter"), effects, tChunkString, fields);
     return call1(meta, undef(), code);
   });
@@ -178,7 +173,4 @@ JsValue tokenizeMathFenced = JS.method3((JsValue self, JsValue effects, JsValue 
   return start;
 });
 
-export JsValue mathFlow = JS.object();
-JS.set(mathFlow, "tokenize", tokenizeMathFenced);
-JS.set(mathFlow, "concrete", true);
-JS.set(mathFlow, "name", "mathFlow");
+export JsValue mathFlow = JS.object("tokenize", tokenizeMathFenced, "concrete", true, "name", "mathFlow");

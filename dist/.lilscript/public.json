@@ -1,0 +1,424 @@
+{
+  "version": 5,
+  "source_sha256": "568fd2d61bc375a55cb4ce5c6a6e37d4eacc3e3f0fbe4dfeda6df4a2ab226cbd",
+  "inputs": {
+    "root": 0,
+    "entries": [
+      {
+        "name": "index",
+        "module": 0
+      }
+    ],
+    "modules": [
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/entry.lil",
+        "bytes": 744,
+        "sha256": "64f48d6eef2113eb03cf730cd8d2f94989b7f457d01362c46510dd34f4db2946",
+        "dependencies": [
+          1,
+          2,
+          10,
+          11
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/host.lil",
+        "bytes": 1633,
+        "sha256": "b2649befcadc680c9732bc4bceb78dfb3478588e4ef6fd6dbf2a84d889977db4",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/syntax.lil",
+        "bytes": 467,
+        "sha256": "36a72b3476e3fdc14b62dc4948e538f9fd0411b2091eb105a063cf397ffc53b7",
+        "dependencies": [
+          1,
+          3,
+          9,
+          6
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/math-flow.lil",
+        "bytes": 7210,
+        "sha256": "c691ad4d478f53c267f7f959cafdc68ddf6255667b84ae81edd089a5618fd12b",
+        "dependencies": [
+          1,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/factory-space.lil",
+        "bytes": 890,
+        "sha256": "99924129a3eea20a761914dfc359f635d373262a931ea7509c7a63ca0f2201cb",
+        "dependencies": [
+          1,
+          5
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/util-character.lil",
+        "bytes": 367,
+        "sha256": "ac474e86305493919158c13314c6c352a19449fdc33ec1a4ceca12678712fd8a",
+        "dependencies": [
+          6
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/symbol/codes.lil",
+        "bytes": 137,
+        "sha256": "d01921c0a468164d9ef2adccd857c281feb72cb8e5ef3620130a1a07f836a024",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/symbol/constants.lil",
+        "bytes": 70,
+        "sha256": "6f2094876a7b873119349002ec2982fd24c37f8615ef1378954f0903c003086a",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/symbol/types.lil",
+        "bytes": 698,
+        "sha256": "2f72da1f2ed2e596f4c9e95506d31aa8f5c4cfd17acef2f64d577d4bd7e407c8",
+        "dependencies": [],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/math-text.lil",
+        "bytes": 5393,
+        "sha256": "a5be54f55e1c2e987fddf0aea90dda01b55a15a1b03b8b2ccff8fff36725de78",
+        "dependencies": [
+          1,
+          5,
+          6,
+          8
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/from-markdown.lil",
+        "bytes": 3573,
+        "sha256": "9a572ad3fca291286f00b7fc8a6560f6e27b169398d784c177c65ab0012c88cd",
+        "dependencies": [
+          1
+        ],
+        "dynamic_dependencies": []
+      },
+      {
+        "path": "/home/azureuser/lilscript-rebuild-reports/2026-10-03-site-refresh/ports/remark-mathlil/src/to-markdown.lil",
+        "bytes": 5079,
+        "sha256": "2c0cbcbe929cc1f0e9fbc9d8e9861d97add1a8484c6ffda632594a29b61f3c56",
+        "dependencies": [
+          1
+        ],
+        "dynamic_dependencies": []
+      }
+    ],
+    "host_modules": [],
+    "host_reserved": []
+  },
+  "outputs": [
+    {
+      "mode": "single",
+      "format": "esm",
+      "entries": [
+        {
+          "name": "index",
+          "file": "remark-math.esm.js",
+          "dynamic": false,
+          "closure": [
+            "remark-math.esm.js"
+          ],
+          "row": 2203,
+          "raw_row": 6547
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-math.esm.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "syntax.lil",
+            "math-flow.lil",
+            "factory-space.lil",
+            "util-character.lil",
+            "symbol/codes.lil",
+            "symbol/constants.lil",
+            "symbol/types.lil",
+            "math-text.lil",
+            "from-markdown.lil",
+            "to-markdown.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 6547,
+          "codec_bytes": 2203,
+          "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+        }
+      ],
+      "side_effects": [
+        "remark-math.esm.js"
+      ],
+      "codec_total": 2203,
+      "rows_total": 2203,
+      "setters": 0,
+      "output": "primary",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        166,
+        186,
+        27,
+        188,
+        255,
+        234,
+        88,
+        154,
+        17,
+        76,
+        38,
+        144,
+        185,
+        32,
+        245,
+        1,
+        154,
+        237,
+        215,
+        181,
+        64,
+        199,
+        25,
+        88,
+        244,
+        5,
+        165,
+        102,
+        88,
+        233,
+        233,
+        170
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "iife",
+      "entries": [
+        {
+          "name": "index",
+          "file": "remark-math.umd.js",
+          "dynamic": false,
+          "closure": [
+            "remark-math.umd.js"
+          ],
+          "row": 2297,
+          "raw_row": 6746
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-math.umd.js",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "syntax.lil",
+            "math-flow.lil",
+            "factory-space.lil",
+            "util-character.lil",
+            "math-text.lil",
+            "from-markdown.lil",
+            "to-markdown.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 6746,
+          "codec_bytes": 2297,
+          "sha256": "800cea68adcef064c5b7f1af392c8203129ee6ae38a0758dbd5b17ea3916f094"
+        }
+      ],
+      "side_effects": [
+        "remark-math.umd.js"
+      ],
+      "codec_total": 2297,
+      "rows_total": 2297,
+      "setters": 0,
+      "output": "browser",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        94,
+        2,
+        157,
+        33,
+        194,
+        186,
+        99,
+        141,
+        52,
+        32,
+        144,
+        27,
+        141,
+        91,
+        78,
+        188,
+        207,
+        150,
+        66,
+        243,
+        194,
+        49,
+        154,
+        192,
+        185,
+        253,
+        201,
+        75,
+        196,
+        207,
+        134,
+        84
+      ]
+    },
+    {
+      "mode": "single",
+      "format": "cjs",
+      "entries": [
+        {
+          "name": "index",
+          "file": "remark-math.cjs",
+          "dynamic": false,
+          "closure": [
+            "remark-math.cjs"
+          ],
+          "row": 2293,
+          "raw_row": 6770
+        }
+      ],
+      "files": [
+        {
+          "file": "remark-math.cjs",
+          "role": "entry",
+          "source_map_for": null,
+          "label": [
+            "index"
+          ],
+          "modules": [
+            "entry.lil",
+            "host.lil",
+            "syntax.lil",
+            "math-flow.lil",
+            "factory-space.lil",
+            "math-text.lil",
+            "from-markdown.lil",
+            "to-markdown.lil"
+          ],
+          "anchored": true,
+          "imports": [],
+          "dynamic_imports": [],
+          "bytes": 6770,
+          "codec_bytes": 2293,
+          "sha256": "6fb1cb26dd7551257284fdba575f9d3bd224d3dc168befc873c6002bfaa02a32"
+        }
+      ],
+      "side_effects": [
+        "remark-math.cjs"
+      ],
+      "codec_total": 2293,
+      "rows_total": 2293,
+      "setters": 0,
+      "output": "cjs",
+      "codec": "brotli",
+      "codec_settings": {
+        "brotli": {
+          "quality": 11,
+          "window": 22,
+          "mode": "generic"
+        },
+        "gzip": {
+          "level": 9,
+          "window": 15
+        }
+      },
+      "policy_fingerprint": [
+        102,
+        179,
+        157,
+        25,
+        7,
+        219,
+        230,
+        113,
+        68,
+        174,
+        225,
+        213,
+        158,
+        147,
+        251,
+        48,
+        221,
+        35,
+        194,
+        229,
+        10,
+        219,
+        200,
+        244,
+        119,
+        37,
+        13,
+        184,
+        131,
+        233,
+        28,
+        234
+      ]
+    }
+  ]
+}

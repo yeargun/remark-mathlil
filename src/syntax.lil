@@ -8,8 +8,6 @@ export JsValue math(JsValue options) {
   objSet(flow, JS.string(cDollarSign), mathFlow);
   JsValue text = JS.object();
   objSet(text, JS.string(cDollarSign), mathText(options));
-  JsValue extension = JS.object();
-  JS.set(extension, "flow", flow);
-  JS.set(extension, "text", text);
+  JsValue extension = JS.object("flow", flow, "text", text);
   return extension;
 }

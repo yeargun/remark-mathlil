@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "package": "@itslil/remark-math",
+  "version": "6.0.2",
+  "checkedAt": "2026-10-03T13:57:32.952491+00:00",
+  "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+  "buildReport": "./comparison/package-build-report.json",
+  "packageBuildSeconds": 23.848,
+  "validation": {
+    "ok": true,
+    "checks": [
+      {
+        "suite": "test",
+        "command": [
+          "bash",
+          "-c",
+          "npm run check:types && node --test-concurrency=1 --test test/*.test.mjs test/official/test.js"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/test.log",
+        "logSha256": "e5f1b520beac6180b301201696e32b2e9349d9213ad06141a48998ca4b1fdf19"
+      },
+      {
+        "suite": "pack",
+        "command": [
+          "npm",
+          "run",
+          "check:pack"
+        ],
+        "returncode": 0,
+        "log": "./comparison/package-validation/pack.log",
+        "logSha256": "37d527dddd3c78fdfd3386c0fd460d617e1b2d5481a6f54382e39d084861f982"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "src/entry.lil",
+      "sha256": "64f48d6eef2113eb03cf730cd8d2f94989b7f457d01362c46510dd34f4db2946"
+    },
+    {
+      "path": "src/factory-space.lil",
+      "sha256": "99924129a3eea20a761914dfc359f635d373262a931ea7509c7a63ca0f2201cb"
+    },
+    {
+      "path": "src/from-markdown.lil",
+      "sha256": "9a572ad3fca291286f00b7fc8a6560f6e27b169398d784c177c65ab0012c88cd"
+    },
+    {
+      "path": "src/host.lil",
+      "sha256": "b2649befcadc680c9732bc4bceb78dfb3478588e4ef6fd6dbf2a84d889977db4"
+    },
+    {
+      "path": "src/math-flow.lil",
+      "sha256": "c691ad4d478f53c267f7f959cafdc68ddf6255667b84ae81edd089a5618fd12b"
+    },
+    {
+      "path": "src/math-text.lil",
+      "sha256": "a5be54f55e1c2e987fddf0aea90dda01b55a15a1b03b8b2ccff8fff36725de78"
+    },
+    {
+      "path": "src/symbol/codes.lil",
+      "sha256": "d01921c0a468164d9ef2adccd857c281feb72cb8e5ef3620130a1a07f836a024"
+    },
+    {
+      "path": "src/symbol/constants.lil",
+      "sha256": "6f2094876a7b873119349002ec2982fd24c37f8615ef1378954f0903c003086a"
+    },
+    {
+      "path": "src/symbol/types.lil",
+      "sha256": "2f72da1f2ed2e596f4c9e95506d31aa8f5c4cfd17acef2f64d577d4bd7e407c8"
+    },
+    {
+      "path": "src/syntax.lil",
+      "sha256": "36a72b3476e3fdc14b62dc4948e538f9fd0411b2091eb105a063cf397ffc53b7"
+    },
+    {
+      "path": "src/to-markdown.lil",
+      "sha256": "2c0cbcbe929cc1f0e9fbc9d8e9861d97add1a8484c6ffda632594a29b61f3c56"
+    },
+    {
+      "path": "src/util-character.lil",
+      "sha256": "ac474e86305493919158c13314c6c352a19449fdc33ec1a4ceca12678712fd8a"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/.lilscript/closed.json",
+      "bytes": 6468,
+      "sha256": "162f63a083282ec961b2e047b3632ace5b4e213243f2091fc9bfcf64e5bd8154"
+    },
+    {
+      "path": "dist/.lilscript/public.json",
+      "bytes": 10175,
+      "sha256": "1c344adc4a9182c3e73d97fbd24373f6269c373b5bcdc36135509862f630858a"
+    },
+    {
+      "path": "dist/lilscript.manifest.json",
+      "bytes": 7973,
+      "sha256": "a8063daf5361635c09bce13dff5478d737d53f8cd1c1f9804971586762976e70"
+    },
+    {
+      "path": "dist/remark-math.cjs",
+      "bytes": 6770,
+      "sha256": "6fb1cb26dd7551257284fdba575f9d3bd224d3dc168befc873c6002bfaa02a32"
+    },
+    {
+      "path": "dist/remark-math.closed.js",
+      "bytes": 6283,
+      "sha256": "8c67dce0908ff7fb73fa83ff803e9135d0e0e4730272f627d6476276642aa2c0"
+    },
+    {
+      "path": "dist/remark-math.d.ts",
+      "bytes": 1007,
+      "sha256": "5d99f806355fac25dae9a0d5bc58c74c59b5365deca662fdf4d2eed09ef63cc1"
+    },
+    {
+      "path": "dist/remark-math.esm.js",
+      "bytes": 6547,
+      "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+    },
+    {
+      "path": "dist/remark-math.raw.js",
+      "bytes": 6547,
+      "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+    },
+    {
+      "path": "dist/remark-math.umd.js",
+      "bytes": 6746,
+      "sha256": "800cea68adcef064c5b7f1af392c8203129ee6ae38a0758dbd5b17ea3916f094"
+    }
+  ],
+  "scope": "Checked repository package; independent of npm publication. Main-entry objective comparisons have separate artifacts and timings."
+}

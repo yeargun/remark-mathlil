@@ -135,10 +135,6 @@ export JsValue mathText(JsValue options) {
     return start;
   });
 
-  JsValue construct = JS.object();
-  JS.set(construct, "tokenize", tokenizeMathText);
-  JS.set(construct, "resolve", resolveMathText);
-  JS.set(construct, "previous", previousMathText);
-  JS.set(construct, "name", "mathText");
+  JsValue construct = JS.object("tokenize", tokenizeMathText, "resolve", resolveMathText, "previous", previousMathText, "name", "mathText");
   return construct;
 }
