@@ -1,0 +1,5 @@
+
+> @itslil/remark-math@6.0.2 check:pack
+> node scripts/check-pack.mjs
+
+npm pack: 21 files, 13971 bytes packed, 58821 bytes unpacked

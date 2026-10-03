@@ -1,0 +1,339 @@
+
+> @itslil/remark-math@6.0.2 check:types
+> tsc --noEmit --strict --exactOptionalPropertyTypes --module NodeNext --moduleResolution NodeNext --target ES2022 test/types.test.ts
+
+TAP version 13
+# Subtest: @itslil/remark-math
+    # Subtest: exposes the upstream public API
+    ok 1 - exposes the upstream public API
+      ---
+      duration_ms: 1.572897
+      ...
+    # Subtest: keeps official extension keys in the library lane
+    ok 2 - keeps official extension keys in the library lane
+      ---
+      duration_ms: 0.221134
+      ...
+    # Subtest: pushes micromark and mdast extensions onto the processor
+    ok 3 - pushes micromark and mdast extensions onto the processor
+      ---
+      duration_ms: 0.565409
+      ...
+    # Subtest: creates missing extension arrays
+    ok 4 - creates missing extension arrays
+      ---
+      duration_ms: 0.177222
+      ...
+    # Subtest: does not over-escape a lone dollar with default options
+    ok 5 - does not over-escape a lone dollar with default options
+      ---
+      duration_ms: 6.665269
+      ...
+    1..5
+ok 1 - @itslil/remark-math
+  ---
+  duration_ms: 10.558935
+  type: 'suite'
+  ...
+# Subtest: @itslil/remark-math closed lane
+    # Subtest: ships a closed artifact whose exports stay callable
+    ok 1 - ships a closed artifact whose exports stay callable
+      ---
+      duration_ms: 6.379263
+      ...
+    1..1
+ok 2 - @itslil/remark-math closed lane
+  ---
+  duration_ms: 7.604279
+  type: 'suite'
+  ...
+# Subtest: remarkMath
+    # Subtest: should expose the public api
+    ok 1 - should expose the public api
+      ---
+      duration_ms: 1.507054
+      ...
+    # Subtest: should parse inline and block math
+    ok 2 - should parse inline and block math
+      ---
+      duration_ms: 6.220736
+      ...
+    # Subtest: should ignore an escaped opening dollar sign
+    ok 3 - should ignore an escaped opening dollar sign
+      ---
+      duration_ms: 1.249401
+      ...
+    # Subtest: should *not* ignore an escaped closing dollar sign
+    ok 4 - should *not* ignore an escaped closing dollar sign
+      ---
+      duration_ms: 0.868147
+      ...
+    # Subtest: should support a escaped escape before a dollar sign
+    ok 5 - should support a escaped escape before a dollar sign
+      ---
+      duration_ms: 0.820097
+      ...
+    # Subtest: should ignore dollar signs in inline code (\#1)
+    ok 6 - should ignore dollar signs in inline code (\#1)
+      ---
+      duration_ms: 1.164181
+      ...
+    # Subtest: should allow backticks in math
+    ok 7 - should allow backticks in math
+      ---
+      duration_ms: 0.717034
+      ...
+    # Subtest: should support backticks in inline math
+    ok 8 - should support backticks in inline math
+      ---
+      duration_ms: 0.781023
+      ...
+    # Subtest: should support a super factorial in inline math
+    ok 9 - should support a super factorial in inline math
+      ---
+      duration_ms: 0.934351
+      ...
+    # Subtest: should support a super factorial in block math
+    ok 10 - should support a super factorial in block math
+      ---
+      duration_ms: 0.926516
+      ...
+    # Subtest: should support a math block right after a paragraph
+    ok 11 - should support a math block right after a paragraph
+      ---
+      duration_ms: 0.926295
+      ...
+    # Subtest: should support inline math with double dollars
+    ok 12 - should support inline math with double dollars
+      ---
+      duration_ms: 0.684463
+      ...
+    # Subtest: should support block math with triple dollars
+    ok 13 - should support block math with triple dollars
+      ---
+      duration_ms: 1.408139
+      ...
+    # Subtest: should support indented block math
+    ok 14 - should support indented block math
+      ---
+      duration_ms: 0.722965
+      ...
+    # Subtest: should stringify inline and block math
+    ok 15 - should stringify inline and block math
+      ---
+      duration_ms: 3.061867
+      ...
+    # Subtest: should support `singleDollarTextMath: false` (1)
+    ok 16 - should support `singleDollarTextMath: false` (1)
+      ---
+      duration_ms: 1.079784
+      ...
+    # Subtest: should support `singleDollarTextMath: false` (2)
+    ok 17 - should support `singleDollarTextMath: false` (2)
+      ---
+      duration_ms: 2.41753
+      ...
+    # Subtest: should stringify math in a blockquote
+    ok 18 - should stringify math in a blockquote
+      ---
+      duration_ms: 1.066798
+      ...
+    # Subtest: should support an opening fence w/ meta, w/o closing fence
+    ok 19 - should support an opening fence w/ meta, w/o closing fence
+      ---
+      duration_ms: 0.564658
+      ...
+    # Subtest: should support `meta`
+    ok 20 - should support `meta`
+      ---
+      duration_ms: 0.667791
+      ...
+    # Subtest: should include values after the opening fence
+    ok 21 - should include values after the opening fence
+      ---
+      duration_ms: 0.545191
+      ...
+    # Subtest: should not support values before the closing fence
+    ok 22 - should not support values before the closing fence
+      ---
+      duration_ms: 0.434725
+      ...
+    # Subtest: should include values before the closing fence (except for spacing \#2)
+    ok 23 - should include values before the closing fence (except for spacing \#2)
+      ---
+      duration_ms: 0.562534
+      ...
+    # Subtest: should exclude spacing after the closing fence
+    ok 24 - should exclude spacing after the closing fence
+      ---
+      duration_ms: 0.518371
+      ...
+    # Subtest: should not affect the next block
+    ok 25 - should not affect the next block
+      ---
+      duration_ms: 0.831759
+      ...
+    # Subtest: should support two dollar signs on inline math
+    ok 26 - should support two dollar signs on inline math
+      ---
+      duration_ms: 0.42693
+      ...
+    # Subtest: should stringify a tree
+    ok 27 - should stringify a tree
+      ---
+      duration_ms: 0.34665
+      ...
+    # Subtest: should stringify inline math with double dollars using one dollar by default
+    ok 28 - should stringify inline math with double dollars using one dollar by default
+      ---
+      duration_ms: 0.455974
+      ...
+    # Subtest: should stringify inline math with double dollars using one dollar
+    ok 29 - should stringify inline math with double dollars using one dollar
+      ---
+      duration_ms: 0.482884
+      ...
+    # Subtest: should do markdown-it-katex\#01
+    ok 30 - should do markdown-it-katex\#01
+      ---
+      duration_ms: 0.585918
+      ...
+    # Subtest: should do markdown-it-katex\#02 (deviation)
+    ok 31 - should do markdown-it-katex\#02 (deviation)
+      ---
+      duration_ms: 0.581069
+      ...
+    # Subtest: should do markdown-it-katex\#03: no whitespace before and after is fine
+    ok 32 - should do markdown-it-katex\#03: no whitespace before and after is fine
+      ---
+      duration_ms: 0.670015
+      ...
+    # Subtest: should do markdown-it-katex\#04: even when it starts with a negative sign
+    ok 33 - should do markdown-it-katex\#04: even when it starts with a negative sign
+      ---
+      duration_ms: 0.606406
+      ...
+    # Subtest: should do markdown-it-katex\#05: shouldn’t render empty content
+    ok 34 - should do markdown-it-katex\#05: shouldn’t render empty content
+      ---
+      duration_ms: 0.398867
+      ...
+    # Subtest: should do markdown-it-katex\#06: should require a closing delimiter
+    ok 35 - should do markdown-it-katex\#06: should require a closing delimiter
+      ---
+      duration_ms: 0.389239
+      ...
+    # Subtest: should do markdown-it-katex\#07: paragraph break in inline math is not allowed
+    ok 36 - should do markdown-it-katex\#07: paragraph break in inline math is not allowed
+      ---
+      duration_ms: 0.621635
+      ...
+    # Subtest: should do markdown-it-katex\#08: inline math with apparent markup should not be processed
+    ok 37 - should do markdown-it-katex\#08: inline math with apparent markup should not be processed
+      ---
+      duration_ms: 0.406842
+      ...
+    # Subtest: should do markdown-it-katex\#09: block math can be indented up to 3 spaces
+    ok 38 - should do markdown-it-katex\#09: block math can be indented up to 3 spaces
+      ---
+      duration_ms: 0.426459
+      ...
+    # Subtest: should do markdown-it-katex\#10: …but 4 means a code block
+    ok 39 - should do markdown-it-katex\#10: …but 4 means a code block
+      ---
+      duration_ms: 0.808996
+      ...
+    # Subtest: should do markdown-it-katex\#11: multiline inline math
+    ok 40 - should do markdown-it-katex\#11: multiline inline math
+      ---
+      duration_ms: 0.80076
+      ...
+    # Subtest: should do markdown-it-katex\#12: multiline display math
+    ok 41 - should do markdown-it-katex\#12: multiline display math
+      ---
+      duration_ms: 0.467687
+      ...
+    # Subtest: should do markdown-it-katex\#13: text can immediately follow inline math
+    ok 42 - should do markdown-it-katex\#13: text can immediately follow inline math
+      ---
+      duration_ms: 0.372248
+      ...
+    # Subtest: should do markdown-it-katex\#14: display math self-closes at the end of document
+    ok 43 - should do markdown-it-katex\#14: display math self-closes at the end of document
+      ---
+      duration_ms: 0.348292
+      ...
+    # Subtest: should do markdown-it-katex\#15: display and inline math can appear in lists
+    ok 44 - should do markdown-it-katex\#15: display and inline math can appear in lists
+      ---
+      duration_ms: 1.620326
+      ...
+    # Subtest: should do markdown-it-katex\#16: display math can be written in one line (deviation)
+    ok 45 - should do markdown-it-katex\#16: display math can be written in one line (deviation)
+      ---
+      duration_ms: 0.458008
+      ...
+    # Subtest: should do markdown-it-katex\#17: …or on multiple lines with expression starting and ending on delimited lines (deviation)
+    ok 46 - should do markdown-it-katex\#17: …or on multiple lines with expression starting and ending on delimited lines (deviation)
+      ---
+      duration_ms: 0.412223
+      ...
+    # Subtest: should do markdown-it-katex\#18: escaped delimiters should not render math (deviated)
+    ok 47 - should do markdown-it-katex\#18: escaped delimiters should not render math (deviated)
+      ---
+      duration_ms: 0.756538
+      ...
+    # Subtest: should do markdown-it-katex\#19: numbers can not follow closing inline math (deviated)
+    ok 48 - should do markdown-it-katex\#19: numbers can not follow closing inline math (deviated)
+      ---
+      duration_ms: 0.563215
+      ...
+    # Subtest: should do markdown-it-katex\#20: require non whitespace to right of opening inline math (deviated)
+    ok 49 - should do markdown-it-katex\#20: require non whitespace to right of opening inline math (deviated)
+      ---
+      duration_ms: 0.483776
+      ...
+    # Subtest: should do markdown-it-katex\#21: require non whitespace to left of closing inline math (deviated)
+    ok 50 - should do markdown-it-katex\#21: require non whitespace to left of closing inline math (deviated)
+      ---
+      duration_ms: 0.409237
+      ...
+    # Subtest: should do markdown-it-katex\#23: escaped delimiters in math mode (deviated)
+    ok 51 - should do markdown-it-katex\#23: escaped delimiters in math mode (deviated)
+      ---
+      duration_ms: 0.439724
+      ...
+    # Subtest: should do markdown-it-katex\#24: multiple escaped delimiters in math module (deviated)
+    ok 52 - should do markdown-it-katex\#24: multiple escaped delimiters in math module (deviated)
+      ---
+      duration_ms: 0.715581
+      ...
+    1..52
+ok 3 - remarkMath
+  ---
+  duration_ms: 52.937512
+  ...
+# Subtest: three independently targeted builds have current artifact and config hashes
+ok 4 - three independently targeted builds have current artifact and config hashes
+  ---
+  duration_ms: 3.766247
+  ...
+# Subtest: public comparison describes current versus original and distinguishes build stages
+ok 5 - public comparison describes current versus original and distinguishes build stages
+  ---
+  duration_ms: 0.577783
+  ...
+# Subtest: built Pages artifact contains the current data and measured downloads
+ok 6 - built Pages artifact contains the current data and measured downloads
+  ---
+  duration_ms: 0.765284
+  ...
+1..6
+# tests 62
+# suites 2
+# pass 62
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 558.091727
