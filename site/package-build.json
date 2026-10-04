@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "package": "@itslil/remark-math",
-  "version": "6.0.2",
-  "checkedAt": "2026-10-03T13:57:32.952491+00:00",
+  "version": "6.0.3",
+  "checkedAt": "2026-10-04T20:05:40.661Z",
   "compilerSha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
   "buildReport": "./comparison/package-build-report.json",
-  "packageBuildSeconds": 23.848,
+  "packageBuildSeconds": 26.325,
   "validation": {
     "ok": true,
     "checks": [
@@ -18,33 +18,33 @@
         ],
         "returncode": 0,
         "log": "./comparison/package-validation/test.log",
-        "logSha256": "e5f1b520beac6180b301201696e32b2e9349d9213ad06141a48998ca4b1fdf19"
+        "logSha256": "538239371370cb1615f813e7cb0633bc8d33cccd27e83c0c92df6abd604be20f"
       },
       {
         "suite": "pack",
         "command": [
-          "npm",
-          "run",
-          "check:pack"
+          "bash",
+          "-c",
+          "node scripts/check-pack.mjs"
         ],
         "returncode": 0,
         "log": "./comparison/package-validation/pack.log",
-        "logSha256": "37d527dddd3c78fdfd3386c0fd460d617e1b2d5481a6f54382e39d084861f982"
+        "logSha256": "8df83876e3aae28fb4a890c556852890187802837f7ce0339db73f1c8d450fbd"
       }
     ]
   },
   "sources": [
     {
       "path": "src/entry.lil",
-      "sha256": "64f48d6eef2113eb03cf730cd8d2f94989b7f457d01362c46510dd34f4db2946"
+      "sha256": "a3263087bac7d49e6278c1fb888d5cacf503404f7b2d3da721a357b354f4ac7e"
     },
     {
       "path": "src/factory-space.lil",
-      "sha256": "99924129a3eea20a761914dfc359f635d373262a931ea7509c7a63ca0f2201cb"
+      "sha256": "968b75e4aa387b2a8a0308c6627a781ff96834f11f315d62b61a55c39fdc57c7"
     },
     {
       "path": "src/from-markdown.lil",
-      "sha256": "9a572ad3fca291286f00b7fc8a6560f6e27b169398d784c177c65ab0012c88cd"
+      "sha256": "e4ab85e66111143d02fe5a87d7579d857d9ffa47e6b709c0880ab9ef87af5049"
     },
     {
       "path": "src/host.lil",
@@ -52,11 +52,11 @@
     },
     {
       "path": "src/math-flow.lil",
-      "sha256": "c691ad4d478f53c267f7f959cafdc68ddf6255667b84ae81edd089a5618fd12b"
+      "sha256": "7bb46e02ba7557e2b0e7d6f17497f9561c901c8fff1904c369f623508924d344"
     },
     {
       "path": "src/math-text.lil",
-      "sha256": "a5be54f55e1c2e987fddf0aea90dda01b55a15a1b03b8b2ccff8fff36725de78"
+      "sha256": "bf580266efbc1df7026b0d0ebfb968279e23bddf1e2737659567cab2da84b288"
     },
     {
       "path": "src/symbol/codes.lil",
@@ -72,42 +72,42 @@
     },
     {
       "path": "src/syntax.lil",
-      "sha256": "36a72b3476e3fdc14b62dc4948e538f9fd0411b2091eb105a063cf397ffc53b7"
+      "sha256": "d3803becdaf1d4b7242cac74a1445a206a055e48c6a1ab4f61fda9f83cfe6580"
     },
     {
       "path": "src/to-markdown.lil",
-      "sha256": "2c0cbcbe929cc1f0e9fbc9d8e9861d97add1a8484c6ffda632594a29b61f3c56"
+      "sha256": "8d89cbcc5147240fde6d5c564492dd2994dbf39b45587a3d38e756887202691a"
     },
     {
       "path": "src/util-character.lil",
-      "sha256": "ac474e86305493919158c13314c6c352a19449fdc33ec1a4ceca12678712fd8a"
+      "sha256": "180357d117fec5de5b3226474a8086579d6256e483d3c1250297020fce9c9e78"
     }
   ],
   "artifacts": [
     {
       "path": "dist/.lilscript/closed.json",
-      "bytes": 6468,
-      "sha256": "162f63a083282ec961b2e047b3632ace5b4e213243f2091fc9bfcf64e5bd8154"
+      "bytes": 6034,
+      "sha256": "ddb50b2ba54e29848906708243753010a69453831dc7cec6f2e463c8d70222ad"
     },
     {
       "path": "dist/.lilscript/public.json",
-      "bytes": 10175,
-      "sha256": "1c344adc4a9182c3e73d97fbd24373f6269c373b5bcdc36135509862f630858a"
+      "bytes": 9645,
+      "sha256": "6c4330652e1d74bc70dfd44e796ffaa525f0b02c20c6d6183d3ef9b048bd5b98"
     },
     {
       "path": "dist/lilscript.manifest.json",
-      "bytes": 7973,
-      "sha256": "a8063daf5361635c09bce13dff5478d737d53f8cd1c1f9804971586762976e70"
+      "bytes": 7877,
+      "sha256": "ac60ec3b9f33f0e916a4227484a4148c80c8f75eba37249021893b159548c41f"
     },
     {
       "path": "dist/remark-math.cjs",
-      "bytes": 6770,
-      "sha256": "6fb1cb26dd7551257284fdba575f9d3bd224d3dc168befc873c6002bfaa02a32"
+      "bytes": 6018,
+      "sha256": "8caae5d1922c660b279b2f1ceab2c778d02752cd160946ee812e96a9f7f1900c"
     },
     {
       "path": "dist/remark-math.closed.js",
-      "bytes": 6283,
-      "sha256": "8c67dce0908ff7fb73fa83ff803e9135d0e0e4730272f627d6476276642aa2c0"
+      "bytes": 5997,
+      "sha256": "a3489e9577f69ef334bfbda93c8ba9a8cb94502a454d7543997fce6e1eb4d2b3"
     },
     {
       "path": "dist/remark-math.d.ts",
@@ -116,18 +116,18 @@
     },
     {
       "path": "dist/remark-math.esm.js",
-      "bytes": 6547,
-      "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+      "bytes": 5811,
+      "sha256": "caf497185c9d4a988acf4813497078fac2f9f8f01fc1f9d1f898fdf4f4c1ae4c"
     },
     {
       "path": "dist/remark-math.raw.js",
-      "bytes": 6547,
-      "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+      "bytes": 5811,
+      "sha256": "caf497185c9d4a988acf4813497078fac2f9f8f01fc1f9d1f898fdf4f4c1ae4c"
     },
     {
       "path": "dist/remark-math.umd.js",
-      "bytes": 6746,
-      "sha256": "800cea68adcef064c5b7f1af392c8203129ee6ae38a0758dbd5b17ea3916f094"
+      "bytes": 6071,
+      "sha256": "b24398dab2ca94c45b6e460165662b725ea101b9fca0a1188fb001e70b3abe4f"
     }
   ],
   "scope": "Checked repository package; independent of npm publication. Main-entry objective comparisons have separate artifacts and timings."

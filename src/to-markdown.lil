@@ -1,3 +1,4 @@
+extern JsValue Object;
 import { call0, call1, call2, isNullish, objGet, objectAssign, pin, push, singleDollarEnabled, undef } from "./host.lil";
 
 int longestStreak(string source, string substring) {
@@ -22,7 +23,7 @@ int longestStreak(string source, string substring) {
 }
 
 string nodeText(JsValue node) {
-  JsValue value = objGet(node, "value");
+  JsValue value = node["value"];
   if (value.truthy()) {
     return JS.assume(value);
   }
@@ -36,40 +37,36 @@ JsValue inlineMathPeek = JS.method0((JsValue _self) => {
 export JsValue mathToMarkdown(JsValue options) {
   bool single = singleDollarEnabled(options);
 
-  JsValue handleMath = JS.methodRest((JsValue _self, JsValue args) => {
-    JsValue node = args[0];
-    JsValue state = args[2];
-    JsValue info = args[3];
+  JsValue handleMath = (JsValue node, JsValue _parent, JsValue state, JsValue info) => {
     string raw = nodeText(node);
-    JsValue tracker = call1(objGet(state, "createTracker"), state, info);
+    JsValue tracker = JS.invoke(state, "createTracker", info);
     int size = longestStreak(raw, "$") + 1;
     if (size < 2) {
       size = 2;
     }
     string sequence = "$".repeat(size);
-    JsValue exit = call1(objGet(state, "enter"), state, "mathFlow");
-    string value = JS.assume(call1(objGet(tracker, "move"), tracker, sequence));
-    JsValue meta = objGet(node, "meta");
+    JsValue exit = JS.invoke(state, "enter", "mathFlow");
+    string value = JS.assume(JS.invoke(tracker, "move", sequence));
+    JsValue meta = node["meta"];
     if (meta.truthy()) {
-      JsValue subexit = call1(objGet(state, "enter"), state, "mathFlowMeta");
-      JsValue safeOpts = JS.object("after", "\n", "before", value, "encode", JS.array("$"));
-      objectAssign(safeOpts, call0(objGet(tracker, "current"), tracker));
-      string safe = JS.assume(call2(objGet(state, "safe"), state, meta, safeOpts));
-      string movedSafe = JS.assume(call1(objGet(tracker, "move"), tracker, safe));
+      JsValue subexit = JS.invoke(state, "enter", "mathFlowMeta");
+      JsValue safeOpts = JS.invoke(Object, "assign", JS.object("after", "\n", "before", value, "encode", JS.array("$")), JS.invoke(tracker, "current"));
+      string safe = JS.assume(JS.invoke(state, "safe", meta, safeOpts));
+      string movedSafe = JS.assume(JS.invoke(tracker, "move", safe));
       value = value + movedSafe;
-      call0(subexit, undef());
+      JS.call(subexit, undef());
     }
-    string movedLine = JS.assume(call1(objGet(tracker, "move"), tracker, "\n"));
+    string movedLine = JS.assume(JS.invoke(tracker, "move", "\n"));
     value = value + movedLine;
     if (raw.length > 0) {
-      string movedRaw = JS.assume(call1(objGet(tracker, "move"), tracker, raw + "\n"));
+      string movedRaw = JS.assume(JS.invoke(tracker, "move", raw + "\n"));
       value = value + movedRaw;
     }
-    string movedClose = JS.assume(call1(objGet(tracker, "move"), tracker, sequence));
+    string movedClose = JS.assume(JS.invoke(tracker, "move", sequence));
     value = value + movedClose;
-    call0(exit, undef());
+    JS.call(exit, undef());
     return value;
-  });
+  };
 
   JsValue handleInline = JS.method3((JsValue _self, JsValue node, JsValue _parent, JsValue state) => {
     string value = nodeText(node);
@@ -93,30 +90,21 @@ export JsValue mathToMarkdown(JsValue options) {
     if (hasContent.test(value) && (startsSpace.test(value) && endsSpace.test(value) || dollarEdge.test(value))) {
       value = " " + value + " ";
     }
-    JsValue unsafe = objGet(state, "unsafe");
-    int index = -1;
-    int n = unsafe.length.toInt();
-    while (true) {
-      index = index + 1;
-      if (index >= n) {
-        break;
-      }
+    JsValue unsafe = state["unsafe"];
+    for (int index = 0; index < unsafe.length.toInt(); index++) {
       JsValue pattern = unsafe[index];
-      if (!objGet(pattern, "atBreak").truthy()) {
+      if (!pattern["atBreak"].truthy()) {
         continue;
       }
-      JsValue expression = call1(objGet(state, "compilePattern"), state, pattern);
+      JsValue expression = JS.invoke(state, "compilePattern", pattern);
       while (true) {
-        JsValue found = JS.call(JS.get(expression, "exec"), expression, value);
+        JsValue found = JS.invoke(expression, "exec", value);
         if (isNullish(found)) {
           break;
         }
-        int position = JS.number(objGet(found, "index")).toInt();
+        int position = JS.number(found["index"]).toInt();
         int matchIndex = position;
-        JsValue text = value;
-        JsValue at = JS.call(JS.get(text, "codePointAt"), text, position);
-        if (JS.strictEqual(at, 10) &&
-            JS.strictEqual(JS.call(JS.get(text, "codePointAt"), text, position - 1), 13)) {
+        if (value.charCodeAt(position) == 10 && value.charCodeAt(position - 1) == 13) {
           position = position - 1;
         }
         value = value.slice(0, position) + " " + value.slice(matchIndex + 1, value.length);
@@ -125,23 +113,15 @@ export JsValue mathToMarkdown(JsValue options) {
     return sequence + value + sequence;
   });
 
-  JS.set(handleInline, "peek", inlineMathPeek);
+  handleInline["peek"] = inlineMathPeek;
 
   JsValue unsafe = JS.array(
     JS.object("character", "\r", "inConstruct", "mathFlowMeta"),
-    JS.object("character", "\n", "inConstruct", "mathFlowMeta")
+    JS.object("character", "\n", "inConstruct", "mathFlowMeta"),
+    JS.object("character", "$", "after", if (single) { JS.undefined() } else { "\\$" }, "inConstruct", "phrasing"),
+    JS.object("character", "$", "inConstruct", "mathFlowMeta"),
+    JS.object("atBreak", true, "character", "$", "after", "\\$")
   );
-  JsValue dollarPhrase = JS.object();
-  JS.set(dollarPhrase, "character", "$");
-  if (single) {
-    pin(dollarPhrase, "after", undef());
-  } else {
-    JS.set(dollarPhrase, "after", "\\$");
-  }
-  JS.set(dollarPhrase, "inConstruct", "phrasing");
-  push(unsafe, dollarPhrase);
-  push(unsafe, JS.object("character", "$", "inConstruct", "mathFlowMeta"));
-  push(unsafe, JS.object("atBreak", true, "character", "$", "after", "\\$"));
 
   return JS.object(
     "unsafe", unsafe,

@@ -12,8 +12,8 @@
           "closure": [
             "remark-math.esm.js"
           ],
-          "row": 2203,
-          "raw_row": 6547
+          "row": 2075,
+          "raw_row": 5811
         }
       ],
       "files": [
@@ -41,16 +41,16 @@
           "anchored": true,
           "imports": [],
           "dynamic_imports": [],
-          "bytes": 6547,
-          "codec_bytes": 2203,
-          "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54"
+          "bytes": 5811,
+          "codec_bytes": 2075,
+          "sha256": "caf497185c9d4a988acf4813497078fac2f9f8f01fc1f9d1f898fdf4f4c1ae4c"
         }
       ],
       "side_effects": [
         "remark-math.esm.js"
       ],
-      "codec_total": 2203,
-      "rows_total": 2203,
+      "codec_total": 2075,
+      "rows_total": 2075,
       "setters": 0,
       "output": "public/primary",
       "codec": "brotli",
@@ -66,38 +66,38 @@
         }
       },
       "policy_fingerprint": [
-        166,
-        186,
-        27,
-        188,
-        255,
-        234,
-        88,
-        154,
-        17,
-        76,
-        38,
-        144,
-        185,
-        32,
-        245,
-        1,
-        154,
-        237,
+        195,
+        217,
         215,
-        181,
-        64,
-        199,
-        25,
-        88,
-        244,
+        196,
+        135,
+        99,
+        74,
+        51,
+        50,
+        146,
+        48,
+        0,
+        198,
+        227,
+        80,
         5,
-        165,
-        102,
-        88,
-        233,
-        233,
-        170
+        66,
+        121,
+        120,
+        3,
+        62,
+        224,
+        10,
+        99,
+        112,
+        225,
+        152,
+        59,
+        172,
+        71,
+        228,
+        24
       ]
     },
     {
@@ -111,8 +111,8 @@
           "closure": [
             "remark-math.umd.js"
           ],
-          "row": 2297,
-          "raw_row": 6746
+          "row": 2164,
+          "raw_row": 6071
         }
       ],
       "files": [
@@ -126,10 +126,8 @@
           "modules": [
             "entry.lil",
             "host.lil",
-            "syntax.lil",
             "math-flow.lil",
             "factory-space.lil",
-            "util-character.lil",
             "math-text.lil",
             "from-markdown.lil",
             "to-markdown.lil"
@@ -137,16 +135,16 @@
           "anchored": true,
           "imports": [],
           "dynamic_imports": [],
-          "bytes": 6746,
-          "codec_bytes": 2297,
-          "sha256": "800cea68adcef064c5b7f1af392c8203129ee6ae38a0758dbd5b17ea3916f094"
+          "bytes": 6071,
+          "codec_bytes": 2164,
+          "sha256": "b24398dab2ca94c45b6e460165662b725ea101b9fca0a1188fb001e70b3abe4f"
         }
       ],
       "side_effects": [
         "remark-math.umd.js"
       ],
-      "codec_total": 2297,
-      "rows_total": 2297,
+      "codec_total": 2164,
+      "rows_total": 2164,
       "setters": 0,
       "output": "public/browser",
       "codec": "brotli",
@@ -162,38 +160,38 @@
         }
       },
       "policy_fingerprint": [
-        94,
-        2,
-        157,
-        33,
-        194,
-        186,
-        99,
-        141,
-        52,
-        32,
-        144,
-        27,
-        141,
-        91,
-        78,
-        188,
-        207,
-        150,
-        66,
-        243,
-        194,
-        49,
-        154,
-        192,
-        185,
-        253,
-        201,
-        75,
-        196,
-        207,
-        134,
-        84
+        129,
+        36,
+        187,
+        135,
+        69,
+        38,
+        0,
+        214,
+        190,
+        132,
+        42,
+        136,
+        53,
+        156,
+        175,
+        180,
+        58,
+        18,
+        56,
+        255,
+        180,
+        56,
+        76,
+        223,
+        180,
+        29,
+        119,
+        216,
+        50,
+        38,
+        220,
+        46
       ]
     },
     {
@@ -207,8 +205,8 @@
           "closure": [
             "remark-math.cjs"
           ],
-          "row": 2293,
-          "raw_row": 6770
+          "row": 2150,
+          "raw_row": 6018
         }
       ],
       "files": [
@@ -222,7 +220,6 @@
           "modules": [
             "entry.lil",
             "host.lil",
-            "syntax.lil",
             "math-flow.lil",
             "factory-space.lil",
             "math-text.lil",
@@ -232,16 +229,16 @@
           "anchored": true,
           "imports": [],
           "dynamic_imports": [],
-          "bytes": 6770,
-          "codec_bytes": 2293,
-          "sha256": "6fb1cb26dd7551257284fdba575f9d3bd224d3dc168befc873c6002bfaa02a32"
+          "bytes": 6018,
+          "codec_bytes": 2150,
+          "sha256": "8caae5d1922c660b279b2f1ceab2c778d02752cd160946ee812e96a9f7f1900c"
         }
       ],
       "side_effects": [
         "remark-math.cjs"
       ],
-      "codec_total": 2293,
-      "rows_total": 2293,
+      "codec_total": 2150,
+      "rows_total": 2150,
       "setters": 0,
       "output": "public/cjs",
       "codec": "brotli",
@@ -257,38 +254,38 @@
         }
       },
       "policy_fingerprint": [
-        102,
-        179,
-        157,
-        25,
-        7,
-        219,
-        230,
-        113,
-        68,
-        174,
-        225,
-        213,
-        158,
-        147,
-        251,
-        48,
-        221,
-        35,
-        194,
-        229,
-        10,
-        219,
-        200,
-        244,
-        119,
-        37,
-        13,
-        184,
         131,
-        233,
-        28,
-        234
+        114,
+        182,
+        94,
+        39,
+        224,
+        169,
+        196,
+        81,
+        159,
+        61,
+        5,
+        171,
+        246,
+        52,
+        229,
+        128,
+        78,
+        79,
+        186,
+        138,
+        215,
+        237,
+        38,
+        170,
+        14,
+        157,
+        76,
+        245,
+        163,
+        93,
+        243
       ]
     },
     {
@@ -302,8 +299,8 @@
           "closure": [
             "remark-math.closed.js"
           ],
-          "row": 2290,
-          "raw_row": 6283
+          "row": 2190,
+          "raw_row": 5997
         }
       ],
       "files": [
@@ -331,16 +328,16 @@
           "anchored": true,
           "imports": [],
           "dynamic_imports": [],
-          "bytes": 6283,
-          "codec_bytes": 2290,
-          "sha256": "8c67dce0908ff7fb73fa83ff803e9135d0e0e4730272f627d6476276642aa2c0"
+          "bytes": 5997,
+          "codec_bytes": 2190,
+          "sha256": "a3489e9577f69ef334bfbda93c8ba9a8cb94502a454d7543997fce6e1eb4d2b3"
         }
       ],
       "side_effects": [
         "remark-math.closed.js"
       ],
-      "codec_total": 2290,
-      "rows_total": 2290,
+      "codec_total": 2190,
+      "rows_total": 2190,
       "setters": 0,
       "output": "closed/primary",
       "codec": "brotli",
@@ -395,5 +392,5 @@
     "remark-math.raw.js": "remark-math.esm.js"
   },
   "providers": [],
-  "source_sha256": "2a8665e498fea46a12b27305c4f3427473f2407d65c7ea5f92f9614ab0a7b9ce"
+  "source_sha256": "93939ebca6184e99ba909ed59892170de2ffc5ba54981ec932f88144dedac807"
 }

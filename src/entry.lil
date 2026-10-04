@@ -11,9 +11,9 @@ JsValue remarkMathCall(JsValue self, JsValue options) {
     settings = options;
   }
   JsValue data = JS.invoke(self, "data");
-  push(ensureList(data, "micromarkExtensions"), math(settings));
-  push(ensureList(data, "fromMarkdownExtensions"), mathFromMarkdown());
-  push(ensureList(data, "toMarkdownExtensions"), mathToMarkdown(settings));
+  JS.invoke(ensureList(data, "micromarkExtensions"), "push", math(settings));
+  JS.invoke(ensureList(data, "fromMarkdownExtensions"), "push", mathFromMarkdown());
+  JS.invoke(ensureList(data, "toMarkdownExtensions"), "push", mathToMarkdown(settings));
   return undef();
 }
 
