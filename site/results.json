@@ -1,81 +1,207 @@
 {
-  "pin": "remark-math@6.0.0",
-  "package": "@itslil/remark-math",
   "file": "remark-math",
   "lilExport": "default",
   "officialExport": "default",
-  "node": "v22.21.1",
-  "codec": "lilscript-codec gzip-9 / brotli-11",
-  "runtime": "Node v22.21.1",
-  "warmupDiscard": 3,
-  "comparison": "Official rows are an esbuild bundle of remark-math@6.0.0 plus its runtime graph, then Terser or esbuild. LilScript is the compiled npm file. Closed is extern_fields=false.",
-  "spec": {
-    "total": 60,
-    "pass": 60,
-    "label": "tests passing"
-  },
   "play": {
     "kind": "md-plugin",
     "sample": "Energy is $E=mc^2$.\n\n$$\n\\frac{a}{b}\n$$\n"
   },
-  "size": [
-    {
-      "id": "official",
-      "name": "Official remark-math@6.0.0 graph",
-      "raw": 15294,
-      "gzip9": 3745,
-      "brotli11": 3315,
-      "note": "esbuild bundle of the published package plus runtime deps",
-      "diagnostic": false
+  "package": "@itslil/remark-math",
+  "pin": "remark-math@6.0.0",
+  "objectiveComparison": {
+    "schemaVersion": 4,
+    "name": "remark-mathlil",
+    "package": "@itslil/remark-math",
+    "measuredAt": "2026-10-03T02:05:48.694994+03:00",
+    "compiler": {
+      "baseRevision": "f7d29bd9",
+      "binarySha256": "8ff44fabb92c949e68240ce6541038fd52e2f3c04d1a9ac470031e4238541c3a",
+      "hasLocalSourceChanges": true
     },
-    {
-      "id": "official-terser-mangle",
-      "name": "Official · Terser mangle on",
-      "raw": 6350,
-      "gzip9": 2324,
-      "brotli11": 2097,
-      "note": "Terser compress of that graph, mangle: true",
-      "baseline": true
+    "upstream": {
+      "package": "remark-math",
+      "version": "6.0.0",
+      "external": [],
+      "sharedExports": [
+        "default"
+      ],
+      "excludedExports": [],
+      "additionalExports": [],
+      "resolution": {
+        "platform": "neutral",
+        "conditions": [
+          "production"
+        ],
+        "mainFields": [
+          "module",
+          "main"
+        ],
+        "target": "es2020",
+        "defines": {
+          "process.env.NODE_ENV": "production"
+        }
+      }
     },
-    {
-      "id": "official-terser-nomangle",
-      "name": "Official · Terser mangle off",
-      "raw": 9585,
-      "gzip9": 2727,
-      "brotli11": 2468,
-      "note": "Terser compress of that graph, mangle: false"
+    "scope": "Portable main-entry ESM with matching shared named exports and external imports. The original uses production/default package conditions, keeping data-based entity decoding rather than relying on the DOM.",
+    "machine": {
+      "cpu": "AMD EPYC 7763 64-Core Processor",
+      "logicalCpus": 8,
+      "memoryGiB": 15.6,
+      "os": "Linux-7.0.0-1014-azure-x86_64-with-glibc2.39",
+      "node": "v20.19.0"
     },
-    {
-      "id": "official-esbuild",
-      "name": "Official · esbuild minify",
-      "raw": 6559,
-      "gzip9": 2546,
-      "brotli11": 2308,
-      "note": "esbuild minify of that graph"
-    },
-    {
-      "id": "itslil",
-      "name": "@itslil/remark-math · library",
-      "raw": 6372,
-      "gzip9": 2522,
-      "brotli11": 2287,
-      "note": "LilScript js-module, extern_fields true. The npm ESM.",
-      "primary": true
-    },
-    {
-      "id": "itslil-closed",
-      "name": "@itslil/remark-math · closed",
-      "raw": 6697,
-      "gzip9": 2793,
-      "brotli11": 2541,
-      "note": "Same source, extern_fields false; diagnostic only"
+    "objectives": [
+      {
+        "objective": "raw",
+        "metric": "raw",
+        "lilscript": {
+          "artifact": "./comparison-artifacts/lilscript-raw.mjs",
+          "sizes": {
+            "raw": 6072,
+            "gzip9": 2555,
+            "brotli11": 2292
+          },
+          "sha256": "f75f80be79e925105c2b4df429fda6ba44b59e4b4489fad1682948542e84d121",
+          "buildSeconds": 7.6278946950005775,
+          "config": "./comparison-artifacts/lilscript-raw.toml",
+          "configSha256": "025e02f372483f4ff9960db42d946a8c5448e24cb80a8208f05a41b98c075df7"
+        },
+        "original": {
+          "tool": "Oxc",
+          "version": "via Vite 8.2.1",
+          "artifact": "./comparison-artifacts/original-oxc.mjs",
+          "sizes": {
+            "raw": 6112,
+            "gzip9": 2265,
+            "brotli11": 2041
+          },
+          "sha256": "0d5d8a3fda8eab733474d59b1d01697adeb687638f95dd8770ebf8f7c85180b1",
+          "buildSeconds": 0.19881553499999974
+        },
+        "ratio": 0.993455497382199
+      },
+      {
+        "objective": "gzip",
+        "metric": "gzip9",
+        "lilscript": {
+          "artifact": "./comparison-artifacts/lilscript-gzip.mjs",
+          "sizes": {
+            "raw": 6552,
+            "gzip9": 2446,
+            "brotli11": 2222
+          },
+          "sha256": "b2e7473a784e514ce1c8bf8a3da89ffb4f3a89a725ef5ef2894fe389d66edbd7",
+          "buildSeconds": 12.336980200001562,
+          "config": "./comparison-artifacts/lilscript-gzip.toml",
+          "configSha256": "7dee218489a8a139c1759c8288bf8ce155c56f913c8e10877581b5ab59d701ce"
+        },
+        "original": {
+          "tool": "Oxc",
+          "version": "via Vite 8.2.1",
+          "artifact": "./comparison-artifacts/original-oxc.mjs",
+          "sizes": {
+            "raw": 6112,
+            "gzip9": 2265,
+            "brotli11": 2041
+          },
+          "sha256": "0d5d8a3fda8eab733474d59b1d01697adeb687638f95dd8770ebf8f7c85180b1",
+          "buildSeconds": 0.19881553499999974
+        },
+        "ratio": 1.0799116997792495
+      },
+      {
+        "objective": "brotli",
+        "metric": "brotli11",
+        "lilscript": {
+          "artifact": "./comparison-artifacts/lilscript-brotli.mjs",
+          "sizes": {
+            "raw": 6547,
+            "gzip9": 2472,
+            "brotli11": 2203
+          },
+          "sha256": "8f5e6ccdc604557a5343b4d6bff44229993a8e34f08ea6bcd4705879f1cc0c54",
+          "buildSeconds": 25.65991901199959,
+          "config": "./comparison-artifacts/lilscript-brotli.toml",
+          "configSha256": "72e62b9693b9d3ce7ffa19bb0872341113139ea8710e4954d3b2bacc4b99ff25"
+        },
+        "original": {
+          "tool": "Oxc",
+          "version": "via Vite 8.2.1",
+          "artifact": "./comparison-artifacts/original-oxc.mjs",
+          "sizes": {
+            "raw": 6112,
+            "gzip9": 2265,
+            "brotli11": 2041
+          },
+          "sha256": "0d5d8a3fda8eab733474d59b1d01697adeb687638f95dd8770ebf8f7c85180b1",
+          "buildSeconds": 0.19881553499999974
+        },
+        "ratio": 1.0793728564429201
+      }
+    ],
+    "minifiers": [
+      {
+        "tool": "Terser",
+        "version": "5.51.2",
+        "artifact": "./comparison-artifacts/original-terser.mjs",
+        "sizes": {
+          "raw": 6350,
+          "gzip9": 2324,
+          "brotli11": 2097
+        },
+        "sha256": "8e6aa080672ee2b189789b14048310af91bbd84afccd545c346b791086ca46b4",
+        "buildSeconds": 0.28965968299999983
+      },
+      {
+        "tool": "esbuild",
+        "version": "0.28.1",
+        "artifact": "./comparison-artifacts/original-esbuild.mjs",
+        "sizes": {
+          "raw": 6559,
+          "gzip9": 2546,
+          "brotli11": 2308
+        },
+        "sha256": "0608e2035ff017e08dd2ead75181017f63d690d6b3cdc4409148e1217f933c3b",
+        "buildSeconds": 0.08360713700000087
+      },
+      {
+        "tool": "Oxc",
+        "version": "via Vite 8.2.1",
+        "artifact": "./comparison-artifacts/original-oxc.mjs",
+        "sizes": {
+          "raw": 6112,
+          "gzip9": 2265,
+          "brotli11": 2041
+        },
+        "sha256": "0d5d8a3fda8eab733474d59b1d01697adeb687638f95dd8770ebf8f7c85180b1",
+        "buildSeconds": 0.19881553499999974
+      }
+    ],
+    "validation": {
+      "checks": 159,
+      "objectives": [
+        {
+          "objective": "raw",
+          "checks": 53,
+          "suite": "upstream-derived/API"
+        },
+        {
+          "objective": "gzip",
+          "checks": 53,
+          "suite": "upstream-derived/API"
+        },
+        {
+          "objective": "brotli",
+          "checks": 53,
+          "suite": "upstream-derived/API"
+        }
+      ],
+      "scope": "Main ESM entry; selected corpora and API checks, not all package formats or complete upstream equivalence."
     }
-  ],
-  "throughput": [
-    {
-      "id": "itslil",
-      "name": "@itslil/remark-math",
-      "documentMs": 0
-    }
-  ]
+  },
+  "spec": {
+    "pass": 159,
+    "total": 159,
+    "label": "current main-entry checks"
+  }
 }

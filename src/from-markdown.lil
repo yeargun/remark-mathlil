@@ -22,42 +22,40 @@ JsValue enterMathFlow = JS.method1((JsValue self, JsValue token) => {
     "value", "",
     "data", JS.object("hName", "pre", "hChildren", JS.array(code))
   );
-  call2(objGet(self, "enter"), self, node, token);
+  JS.invoke(self, "enter", node, token);
   return undef();
 });
 
 JsValue enterMathFlowMeta = JS.method0((JsValue self) => {
-  call0(objGet(self, "buffer"), self);
+  JS.invoke(self, "buffer");
   return undef();
 });
 
 JsValue exitMathFlowMeta = JS.method0((JsValue self) => {
-  JsValue data = call0(objGet(self, "resume"), self);
-  JsValue[] stack = JS.assume(objGet(self, "stack"));
-  JS.set(stack[stack.length - 1], "meta", data);
+  JsValue data = JS.invoke(self, "resume");
+  JsValue[] stack = JS.assume(self["stack"]);
+  stack[stack.length - 1]["meta"] = data;
   return undef();
 });
 
 JsValue exitMathFlowFence = JS.method0((JsValue self) => {
-  if (objGet(objGet(self, "data"), "mathFlowInside").truthy()) {
-    return undef();
+  if (!self["data"]["mathFlowInside"].truthy()) {
+    JS.invoke(self, "buffer");
+    self["data"]["mathFlowInside"] = true;
   }
-  call0(objGet(self, "buffer"), self);
-  JS.set(objGet(self, "data"), "mathFlowInside", true);
   return undef();
 });
 
 JsValue exitMathFlow = JS.method1((JsValue self, JsValue token) => {
   Regex strip = new Regex("^(\\r?\\n|\\r)|(\\r?\\n|\\r)$", "g");
-  string resumed = JS.assume(call0(objGet(self, "resume"), self));
+  string resumed = JS.assume(JS.invoke(self, "resume"));
   string data = resumed.replace(strip, "");
-  JsValue[] stack = JS.assume(objGet(self, "stack"));
+  JsValue[] stack = JS.assume(self["stack"]);
   JsValue node = stack[stack.length - 1];
-  call1(objGet(self, "exit"), self, token);
-  JS.set(node, "value", data);
-  JsValue kids = objGet(objGet(objGet(node, "data"), "hChildren")[0], "children");
-  push(kids, textNode(data));
-  JS.set(objGet(self, "data"), "mathFlowInside", undef());
+  JS.invoke(self, "exit", token);
+  node["value"] = data;
+  JS.invoke(node["data"]["hChildren"][0]["children"], "push", textNode(data));
+  (self["data"])["mathFlowInside"] = undef();
   return undef();
 });
 
@@ -71,24 +69,24 @@ JsValue enterMathText = JS.method1((JsValue self, JsValue token) => {
       "hChildren", JS.array()
     )
   );
-  call2(objGet(self, "enter"), self, node, token);
-  call0(objGet(self, "buffer"), self);
+  JS.invoke(self, "enter", node, token);
+  JS.invoke(self, "buffer");
   return undef();
 });
 
 JsValue exitMathText = JS.method1((JsValue self, JsValue token) => {
-  string data = JS.assume(call0(objGet(self, "resume"), self));
-  JsValue[] stack = JS.assume(objGet(self, "stack"));
+  string data = JS.assume(JS.invoke(self, "resume"));
+  JsValue[] stack = JS.assume(self["stack"]);
   JsValue node = stack[stack.length - 1];
-  call1(objGet(self, "exit"), self, token);
-  JS.set(node, "value", data);
-  push(objGet(objGet(node, "data"), "hChildren"), textNode(data));
+  JS.invoke(self, "exit", token);
+  node["value"] = data;
+  JS.invoke((node["data"])["hChildren"], "push", textNode(data));
   return undef();
 });
 
 JsValue exitMathData = JS.method1((JsValue self, JsValue token) => {
-  JsValue enterData = objGet(objGet(objGet(self, "config"), "enter"), "data");
-  JsValue exitData = objGet(objGet(objGet(self, "config"), "exit"), "data");
+  JsValue enterData = ((self["config"])["enter"])["data"];
+  JsValue exitData = ((self["config"])["exit"])["data"];
   JS.call(enterData, self, token);
   JS.call(exitData, self, token);
   return undef();

@@ -9,13 +9,13 @@ JsValue resolveMathText = JS.method1((JsValue _self, JsValue events) => {
   int headEnterIndex = 3;
   int index = 0;
   int enter = -1;
-  if ((objGet(events[headEnterIndex][1], "type") == tLineEnding || objGet(events[headEnterIndex][1], "type") == tSpace) && (objGet(events[tailExitIndex][1], "type") == tLineEnding || objGet(events[tailExitIndex][1], "type") == tSpace)) {
+  if ((events[headEnterIndex][1]["type"] == tLineEnding || events[headEnterIndex][1]["type"] == tSpace) && (events[tailExitIndex][1]["type"] == tLineEnding || events[tailExitIndex][1]["type"] == tSpace)) {
     index = headEnterIndex;
     while (index < tailExitIndex - 1) {
       index = index + 1;
-      if (objGet(events[index][1], "type") == tMathTextData) {
-        JS.set(events[tailExitIndex][1], "type", tMathTextPadding);
-        JS.set(events[headEnterIndex][1], "type", tMathTextPadding);
+      if (events[index][1]["type"] == tMathTextData) {
+        events[tailExitIndex][1]["type"] = tMathTextPadding;
+        events[headEnterIndex][1]["type"] = tMathTextPadding;
         headEnterIndex = headEnterIndex + 2;
         tailExitIndex = tailExitIndex - 2;
         break;
@@ -27,15 +27,15 @@ JsValue resolveMathText = JS.method1((JsValue _self, JsValue events) => {
   while (index < tailExitIndex) {
     index = index + 1;
     if (enter < 0) {
-      if (index != tailExitIndex && objGet(events[index][1], "type") != tLineEnding) {
+      if (index != tailExitIndex && events[index][1]["type"] != tLineEnding) {
         enter = index;
       }
-    } else if (index == tailExitIndex || objGet(events[index][1], "type") == tLineEnding) {
+    } else if (index == tailExitIndex || events[index][1]["type"] == tLineEnding) {
       int enterI = enter;
-      JS.set(events[enterI][1], "type", tMathTextData);
+      events[enterI][1]["type"] = tMathTextData;
       if (index != enterI + 2) {
-        JS.set(events[enterI][1], "end", objGet(events[index - 1][1], "end"));
-        JS.call(JS.get(events, "splice"), events, enterI + 2, index - enterI - 2);
+        events[enterI][1]["end"] = events[index - 1][1]["end"];
+        JS.invoke(events, "splice", enterI + 2, index - enterI - 2);
         tailExitIndex = tailExitIndex - (index - enterI - 2);
         index = enterI + 2;
       }
@@ -49,9 +49,9 @@ JsValue previousMathText = JS.method1((JsValue self, JsValue code) => {
   if (!JS.strictEqual(code, cDollarSign)) {
     return true;
   }
-  JsValue events = objGet(self, "events");
+  JsValue events = self["events"];
   JsValue[] eventList = JS.assume(events);
-  return objGet(eventList[eventList.length - 1][1], "type") == tCharacterEscape;
+  return eventList[eventList.length - 1][1]["type"] == tCharacterEscape;
 });
 
 export JsValue mathText(JsValue options) {
@@ -66,70 +66,70 @@ export JsValue mathText(JsValue options) {
     JsValue data = JS.method1((JsValue _s, JsValue code) => {
       if (JS.strictEqual(code, null) || JS.strictEqual(code, cSpace) ||
           JS.strictEqual(code, cDollarSign) || markdownLineEnding(code)) {
-        call1(objGet(effects, "exit"), effects, tMathTextData);
-        return call1(between, undef(), code);
+        JS.invoke(effects, "exit", tMathTextData);
+        return JS.call(between, undef(), code);
       }
-      call1(objGet(effects, "consume"), effects, code);
+      JS.invoke(effects, "consume", code);
       return data;
     });
 
     JsValue sequenceClose = JS.method1((JsValue _s, JsValue code) => {
       if (JS.strictEqual(code, cDollarSign)) {
-        call1(objGet(effects, "consume"), effects, code);
+        JS.invoke(effects, "consume", code);
         size = size + 1;
         return sequenceClose;
       }
       if (size == sizeOpen) {
-        call1(objGet(effects, "exit"), effects, tMathTextSequence);
-        call1(objGet(effects, "exit"), effects, tMathText);
-        return call1(ok, undef(), code);
+        JS.invoke(effects, "exit", tMathTextSequence);
+        JS.invoke(effects, "exit", tMathText);
+        return JS.call(ok, undef(), code);
       }
-      JS.set(token, "type", tMathTextData);
-      return call1(data, undef(), code);
+      token["type"] = tMathTextData;
+      return JS.call(data, undef(), code);
     });
 
     between = JS.method1((JsValue _s, JsValue code) => {
       if (JS.strictEqual(code, null)) {
-        return call1(nok, undef(), code);
+        return JS.call(nok, undef(), code);
       }
       if (JS.strictEqual(code, cDollarSign)) {
-        token = call1(objGet(effects, "enter"), effects, tMathTextSequence);
+        token = JS.invoke(effects, "enter", tMathTextSequence);
         size = 0;
-        return call1(sequenceClose, undef(), code);
+        return JS.call(sequenceClose, undef(), code);
       }
       if (JS.strictEqual(code, cSpace)) {
-        call1(objGet(effects, "enter"), effects, tSpace);
-        call1(objGet(effects, "consume"), effects, code);
-        call1(objGet(effects, "exit"), effects, tSpace);
+        JS.invoke(effects, "enter", tSpace);
+        JS.invoke(effects, "consume", code);
+        JS.invoke(effects, "exit", tSpace);
         return between;
       }
       if (markdownLineEnding(code)) {
-        call1(objGet(effects, "enter"), effects, tLineEnding);
-        call1(objGet(effects, "consume"), effects, code);
-        call1(objGet(effects, "exit"), effects, tLineEnding);
+        JS.invoke(effects, "enter", tLineEnding);
+        JS.invoke(effects, "consume", code);
+        JS.invoke(effects, "exit", tLineEnding);
         return between;
       }
-      call1(objGet(effects, "enter"), effects, tMathTextData);
-      return call1(data, undef(), code);
+      JS.invoke(effects, "enter", tMathTextData);
+      return JS.call(data, undef(), code);
     });
 
     JsValue sequenceOpen = JS.method1((JsValue _s, JsValue code) => {
       if (JS.strictEqual(code, cDollarSign)) {
-        call1(objGet(effects, "consume"), effects, code);
+        JS.invoke(effects, "consume", code);
         sizeOpen = sizeOpen + 1;
         return sequenceOpen;
       }
       if (sizeOpen < 2 && !single) {
-        return call1(nok, undef(), code);
+        return JS.call(nok, undef(), code);
       }
-      call1(objGet(effects, "exit"), effects, tMathTextSequence);
-      return call1(between, undef(), code);
+      JS.invoke(effects, "exit", tMathTextSequence);
+      return JS.call(between, undef(), code);
     });
 
     JsValue start = JS.method1((JsValue _s, JsValue code) => {
-      call1(objGet(effects, "enter"), effects, tMathText);
-      call1(objGet(effects, "enter"), effects, tMathTextSequence);
-      return call1(sequenceOpen, undef(), code);
+      JS.invoke(effects, "enter", tMathText);
+      JS.invoke(effects, "enter", tMathTextSequence);
+      return JS.call(sequenceOpen, undef(), code);
     });
 
     return start;

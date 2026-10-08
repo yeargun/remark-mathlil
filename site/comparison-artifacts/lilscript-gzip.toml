@@ -7,10 +7,6 @@ priority = "size-first"
 assume_pristine_builtins = true
 # Remove debugLog instrumentation; ordinary print and host console effects remain.
 strip_debug = true
-# Plain-data reads must not run getters; disable for effectful accessor integrations.
-assume_pure_property_reads = true
-# Callbacks handed to the host are only called, never constructed.
-assume_unconstructed_callbacks = true
 
 # Preserved effort setting. 13 favors size; 14/15 allow more expensive marginal searches.
 [effort]
@@ -18,30 +14,18 @@ level = 15
 
 # Optimize the delivered files for this codec, independently of raw/gzip objectives.
 [objective]
-codecs = "brotli"
+codecs = "gzip"
 [mangle]
 identifiers = true
 properties = true
 pool_strings = true
 
+
 [delivery]
 mode = "single"
-directory = "."
-select = ["index"]
-entry_names = "remark-math.esm.js"
+host_modules = "embed"
+entry_names = "index.mjs"
 [delivery.entries]
-index = "src/entry.lil"
-
-[[delivery.also]]
-name = "cjs"
-entries = ["index"]
-format = "cjs"
-entry_names = "remark-math.cjs"
-
-[[delivery.also]]
-name = "browser"
-format = "iife"
-exports = "default"
-global = "remarkMath"
-global_binding = "property"
-entry_names = "remark-math.umd.js"
+index = "/home/azureuser/remark-mathlil/src/entry.lil"
+[execution]
+jobs = 1

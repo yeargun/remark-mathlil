@@ -1,7 +1,7 @@
 import { cHorizontalTab, cSpace, cVirtualSpace } from "./symbol/codes.lil";
 
 export bool markdownLineEnding(JsValue code) {
-  return !JS.strictEqual(code, null) && JS.number(code) < cHorizontalTab;
+  return !JS.strictEqual(code, null) && code < cHorizontalTab;
 }
 
 export bool markdownSpace(JsValue code) {

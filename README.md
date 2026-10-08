@@ -13,14 +13,13 @@ Two compiles ship from the same `.lil` source:
 | Lane | Config | Meaning |
 | --- | --- | --- |
 | **library** (npm) | `lilscript.toml` · `--target js-module` | reusable ESM. Export names and `extern class` keys stay. |
-| **closed** | `lilscript.closed.toml` · `--target js-module` | closed LilScript world. `extern class` keys may mangle. ESM export names stay so the lane is testable. |
+| **closed** | `lilscript.closed.toml` · `--target js-module` | Diagnostic configuration, measured separately. Public export and external field names remain callable. |
 
 You publish the library lane. `dist/remark-math.closed.js` is diagnostic only.
 
 The LilScript compiler lives next door at `../lilscript`.
 
-### Running the checks
 
-`npm run test:build` builds the package and runs its tests. After an explicit
-`npm run build`, use `npm test` to test those artifacts without rebuilding them.
-This also keeps the development and production files available to the same suite.
+## Comparison with the original
+
+See [COMPARISON.md](COMPARISON.md) for current raw-, gzip- and Brotli-objective builds, minified upstream comparisons, build times and validation.
